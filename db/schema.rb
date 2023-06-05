@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_193419) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_193740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.boolean "alert"
+    t.bigint "user_id", null: false
+    t.bigint "release_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["release_id"], name: "index_favorites_on_release_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "listings", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -40,6 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_193419) do
     t.datetime "updated_at", null: false
     t.index ["listing_id"], name: "index_orders_on_listing_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "ownerships", force: :cascade do |t|
+    t.bigint "release_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["release_id"], name: "index_ownerships_on_release_id"
+    t.index ["user_id"], name: "index_ownerships_on_user_id"
   end
 
   create_table "release_reviews", force: :cascade do |t|
@@ -123,10 +142,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_193419) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "releases"
+  add_foreign_key "favorites", "users"
   add_foreign_key "listings", "releases"
   add_foreign_key "listings", "users"
   add_foreign_key "orders", "listings"
   add_foreign_key "orders", "users"
+  add_foreign_key "ownerships", "releases"
+  add_foreign_key "ownerships", "users"
   add_foreign_key "release_reviews", "users"
   add_foreign_key "releases", "release_reviews"
   add_foreign_key "spotify_albums", "spotify_artists"
