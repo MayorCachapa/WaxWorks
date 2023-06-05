@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_191839) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_193419) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,7 +26,35 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_191839) do
     t.boolean "availability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "release_id", null: false
+    t.index ["release_id"], name: "index_listings_on_release_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status"
+    t.string "shipping_address"
+    t.bigint "listing_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_orders_on_listing_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "release_reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_release_reviews_on_user_id"
+  end
+
+  create_table "releases", force: :cascade do |t|
+    t.bigint "release_review_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["release_review_id"], name: "index_releases_on_release_review_id"
   end
 
   create_table "spotify_albums", force: :cascade do |t|
@@ -95,7 +123,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_191839) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "listings", "releases"
   add_foreign_key "listings", "users"
+  add_foreign_key "orders", "listings"
+  add_foreign_key "orders", "users"
+  add_foreign_key "release_reviews", "users"
+  add_foreign_key "releases", "release_reviews"
   add_foreign_key "spotify_albums", "spotify_artists"
   add_foreign_key "spotify_playlists", "spotify_tracks"
   add_foreign_key "spotify_playlists", "users"
