@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_185239) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_185909) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_185239) do
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
+  create_table "spotify_albums", force: :cascade do |t|
+    t.string "name"
+    t.string "label"
+    t.string "image_url"
+    t.integer "popularity"
+    t.bigint "spotify_artist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spotify_artist_id"], name: "index_spotify_albums_on_spotify_artist_id"
+  end
+
+  create_table "spotify_artists", force: :cascade do |t|
+    t.string "name"
+    t.string "genre"
+    t.integer "popularity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -45,4 +64,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_185239) do
   end
 
   add_foreign_key "listings", "users"
+  add_foreign_key "spotify_albums", "spotify_artists"
 end
