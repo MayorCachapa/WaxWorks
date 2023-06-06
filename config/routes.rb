@@ -7,19 +7,19 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :releases, only: [ :index, :show ]
 
-  reseources :ownerships, only: [ :index, :new, :create ]
+  resources :ownerships, only: [ :index, :new, :create ]
 
   resources :listings, only: [ :index, :new, :create, :show ]
 
   resources :orders, only: [ :show, :create, :index ]
 
-  resources :favorites, :only [ :index, :update ]
+  resources :favorites, only: [ :index, :update ]
 
   resources :releases do
     resources :favorites, :reviews, only: [ :create ]
   end
 
   resources :listings do
-    resources :orders, :only [ :create ]
+    resources :orders, only: [ :create ]
   end
 end
