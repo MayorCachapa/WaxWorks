@@ -1,45 +1,42 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-between">
   <div class="container-fluid justify-content-between">
-<div class= "navbar-brand d-flex align-items-center ps-4">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "logo.png" %>
-    <% end %>
-     <h3 class="m-0 font-weight-bold">WAXWORKS</h3>
-      </div>
-
-    <div class= "d-flex" style="margin-left:-45px;">
-      <div class= "nav-item px-4">
-        Discover
-      </div>
-      <div class= "nav-item px-4">
-        Marketplace
-      </div>
-      <div class= "nav-item px-4">
-      My Collection
-      </div>
+    <div class= "navbar-brand">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "logo.png" %>
+          <h3 class="logo-name">WAXWORKS</h3>
+        <% end %>
     </div>
-      <div class = d-flex>
-        <div class= "navbar-brand ">
+
+    <div class="navbar-core-links">
+      <%= link_to releases_path, class: "nav-item" do %>
+        Discover
+      <% end %>
+      <%= link_to listings_path, class: "nav-item" do %>
+        Marketplace
+      <% end %>
+      <%= link_to ownerships_path, class: "nav-item" do %>
+        My Collection
+      <% end %>
+    </div>
+
+      <div class ="navbar-icons">
+        <div class= "search-icon">
           <%= link_to "#", class: "navbar-brand" do %>
-          <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
           <% end %>
         </div>
 
-        <div class= "navbar-brand">
-          <%= link_to "#", class: "navbar-brand" do %>
-          <i class="fa-regular fa-heart"></i>
+        <div class="heart-icon">
+          <%= link_to favorites_path, class: "navbar-brand" do %>
+            <i class="fa-regular fa-heart heart-icon fa-lg" style="padding-right: 15px"></i>
           <% end %>
         </div>
 
-        <div class= "navbar-brand">
-          <%= link_to "#", class: "navbar-brand" do %>
-          <i class="fa-solid fa-cart-shopping"></i>
+        <div class= "cart-icon">
+          <%= link_to orders_path, class: "navbar-brand" do %>
+            <i class="fa-solid fa-cart-shopping"></i>
           <% end %>
         </div>
       </div>
   </div>
 </div>
-
-
-
-<%# <%= link_to "Home", "#", class: "nav-link" %>
