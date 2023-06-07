@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+user = User.create(email:'test@gmail.com', password:'secret', location:'Caracas, Venezuela', first_name:'Alejandro', last_name:'Rodriguez Hernandez')
+file = File.join(__dir__, 'json/tracks.json')
+hash = JSON.parse(File.open(file).read)
+
+user.save
