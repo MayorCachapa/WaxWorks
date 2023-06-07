@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_07_064758) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_070734) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,9 +31,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_064758) do
     t.float "price"
     t.float "shipping_fee"
     t.text "comments"
-    t.boolean "allow_offers"
+    t.boolean "allow_offers", default: true
     t.string "location"
-    t.boolean "availability"
+    t.boolean "availability", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "release_id", null: false
