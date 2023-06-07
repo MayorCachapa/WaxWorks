@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :orders
   has_many :user_top_spotify_items
   has_many :spotify_playlists
+
+  serialize :user_top_spotify_items, JSON
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
