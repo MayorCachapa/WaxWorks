@@ -1,2 +1,82 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="big-cards">
+    <div class="d-flex flex-column align-items-center intro-card">
+      <h1 class= "font-weight-bold text-center">Everything for the Modern Vinyl Collector</h1>
+        <p></p>
+      <h3 class= "font-weight-bold text-center">Link your Favorite streaming platform, purchase your favorite records & discover  recommendations based on your listening history</h3>
+        <p></p>
+      <button type="button" class="btn btn-dark">Connect with Spotify</button>
+  </div>
+</div>
+
+<div class= "white-cards">
+  <div class="d-flex flex-column align-items-center discogs-cards">
+    <button type="button" class="btn btn-dark">Connect with Discogs</button>
+  </div>
+</div>
+
+<div class= "big-cards">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner ">
+      <div class="carousel-item active ">
+
+        <div class= "carousel1">
+
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class= "carousel2">
+
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class= "carousel3">
+
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+<div class= "white-cards">
+  <div class="d-flex flex-column align-items-center">
+  </div>
+</div>
+
+
+<div class="info-container">
+  <div class="info-card">
+   <h1 class= "font-weight-bold text-center">Vinyl's One Source of Truth</h1>
+    <h3 class= "font-weight-bold text-center">Whether you are just starting your collection or you are a life long collector, WaxWorks recommendations can fine an essential vinyl record for any collection</h3>
+  </div>
+  <div class="photo-card">
+    <div class= "small-image" >
+    <%= image_tag 'record2.jpg' %>
+    </div>
+  </div>
+</div>
