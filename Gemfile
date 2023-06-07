@@ -76,3 +76,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "rack-user_agent", "~> 0.5.3"
+
+gem "httparty", "~> 0.21.0"
+
+gem "discogs-wrapper", "~> 2.5"

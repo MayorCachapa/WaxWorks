@@ -1,5 +1,5 @@
 class Release < ApplicationRecord
-  belongs_to :release_review
+  has_many :release_review
 
   has_many :favorites
   has_many :ownerships
