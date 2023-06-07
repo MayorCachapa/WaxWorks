@@ -9,7 +9,6 @@
 
 .sort-bar h4 {
   margin: auto;
-
 }
 
 .dropbtn {
@@ -51,4 +50,29 @@
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.filter-and-releases {
+  display: flex;
+}
+
+.filter {
+  width: 237px;
+  height: auto;
+}
+
+.filter h5 {
+  width: 237px;
+}
+
+.releases {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.release-card {
+  height: 550px;
+  width: 420px;
+  background-color: white;
+  border: solid;
 }
