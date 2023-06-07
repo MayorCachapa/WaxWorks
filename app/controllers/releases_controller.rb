@@ -1,7 +1,16 @@
 class ReleasesController < ApplicationController
-  def index
-  end
-
-  def show
-  end
+    before_action :set_release, only: [:show]
+  
+    def index
+      @releases = Release.all
+    end
+  
+    def show
+    end
+  
+    private
+  
+    def set_release
+      @release = Release.find(params[:id])
+    end  
 end
