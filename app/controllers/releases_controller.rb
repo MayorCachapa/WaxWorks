@@ -3,13 +3,13 @@ class ReleasesController < ApplicationController
   
     def index
       @releases = Release.all
+      @listings = Listing.all
     end
   
     def show
     end
   
     private
-  
     def set_release
       @release = Release.find(params[:id])
     end  
