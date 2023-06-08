@@ -20,39 +20,17 @@ class OrdersController < ApplicationController
 
       @order.save
 
-      session = Stripe::Checkout::Session.create(
-        payment_method_types: ['card'],
+      session = Stripe::Checkout::Session.create({
         line_items: [{
-          price: {
-            "id": "price_#{(0...8).map { (65 + rand(26)).chr }.join}",
-            "object": "price",
-            "active": true,
-            "billing_scheme": "per_unit",
-            "created": 1686223394,
-            "currency": "usd",
-            "livemode": false,
-
-            "metadata": {},
-
-            "product": "prod_O2mUODhyjnnJrC",
-            "recurring": {
-
-              "interval": "month",
-              "interval_count": 1,
-              "usage_type": "licensed"
-            },
-            "tax_behavior": "unspecified",
-
-
-            "type": "recurring",
-            "unit_amount": listing.price_cents,
-            "unit_amount_decimal": "#{listing.price_cents}"
-          },
-          quantity: 1
+          # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
+          price: 'price_1NGkDDI65PyGesk2B8kxPQoZ',
+          quantity: 1,
         }],
+        mode: 'payment',
         success_url: order_url(@order),
         cancel_url: order_url(@order)
-      )
+      })
+
 
       @order.update(checkout_session_id: session.id)
       redirect_to new_order_payment_path(@order)
