@@ -22,7 +22,7 @@ end
 
 releases = Release.all
 for release in releases
-  listing = Listing.create(user_id: user.id, condition: "Excelent", sleeve_condition: "Excelent", price: 15.99, shipping_fee: 3.50, comments:'Classic', location: user.location, release: release)
+  listing = Listing.create( user_id: user.id, condition: "Excelent", sleeve_condition: "Excelent", price: 15.99, shipping_fee: 3.50, comments:'Classic', location: user.location, release: release, price_cents: 100 )
 end
 
 puts 'Finished successfully'
@@ -35,7 +35,7 @@ puts 'Finished successfully'
     # end
 
     # puts artist_name
-    
+
 # Validations for later
     # if results.any?
     #     artist_album = results.first['title']
