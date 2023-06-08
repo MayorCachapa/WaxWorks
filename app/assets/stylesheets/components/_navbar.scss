@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content:center;
   background: white;
+  align-items: start;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -16,7 +17,7 @@
 .navbar {
   height: 66px;
   padding-bottom: 0;
-  padding-top: 0;
+  padding-top: 7;
   position: fixed;
   top: 0;
   z-index: 1030;
@@ -36,11 +37,11 @@
 }
 
 .search-icon {
-  width: 61px;
+  width: 256px;
 }
 
 .heart-icon {
-  width: 61px;
+  width: 51px;
   margin-bottom: 5px;
 }
 
@@ -58,7 +59,6 @@
 .navbar-core-links {
   display: flex;
   align-items: center;
-  margin-left: -200px;
 }
 
 .nav-item {
@@ -68,9 +68,12 @@
   text-decoration: none;
   color: black;
   padding-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 .nav-item:hover {
   border-bottom: solid;
+  font-weight: bold;
+  border-color: black;
+  background-color: #A5ACAF;
 }
