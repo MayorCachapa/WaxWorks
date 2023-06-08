@@ -44,6 +44,7 @@ class ReleasesController < ApplicationController
   end
 
   def show
+      @listing = Listing.new
   end
 
   private
