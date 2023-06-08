@@ -1,13 +1,14 @@
 <h1>List your Wax</h1>
 
 <div class="card p-5 mb-3">
-    <%= simple_form_for @listing do |f| %>
-    <%=f.string "condition"%>
-    <%=f.string "sleeve_condition"%>
-    <%=f.float "price"%>
-    <%=f.float "shipping_fee"%>
-    <%=f.text "comments"%>
-    <%=f.string "location"%>
-    <%= form.input :image, as: :file, label: "Wax Photo"%>
+    <%= simple_form_for [@release, @listing] do |f| %>
+    <%=f.input "condition"%>
+    <%=f.input "sleeve_condition"%>
+    <%=f.input "price"%>
+    <%=f.input "shipping_fee"%>
+    <%=f.input "comments"%>
+    <%=f.input "location"%>
+    <%= f.input :image, as: :file, label: "Wax Photo"%>
     <%= f.submit class:'btn btn btn-secondary btn-lg btn-dar' %>
     <% end %>
+</div>

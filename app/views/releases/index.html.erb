@@ -16,27 +16,27 @@
   <%# _filter partial is rendered %>
   <%= render "shared/filter" %>
   <div class="releases">
-  <% for listing in @listings %>
+  <% for release in @releases %>
     <div class="release-card">
       <div class="album-thumbnail">
-        <%= image_tag "#{listing.release.url}" %>
+        <%= image_tag "#{release.url}" %>
       </div>
       <div class="album-content">
         <div class="top">
           <div class="album-copy">
-            <h4><%= listing.release.title %></h4>
-            <p><%= listing.release.artist%></p>
+            <h4><%= release.title %></h4>
+            <p><%= release.artist%></p>
           </div>
           <i class="fa-regular fa-heart fa-2x" style="color: #000000;"></i>
         </div>
         <div class="bottom">
           <div class="availability">
             <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
-            <% if listing.availability %>
+            <%# if listing.availability %>
             <p>AVAILABLE</p>
-            <% else %>
-            <p>NOT AVAILABLE</p>
-            <% end %>
+            <%# else %>
+            <%# <p>NOT AVAILABLE</p> %>
+            <%# end %>
           </div>
           <div class="market-value">
             <p>Market Value</p>
