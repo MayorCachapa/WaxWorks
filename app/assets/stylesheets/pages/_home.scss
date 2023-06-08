@@ -1,17 +1,19 @@
 // Specific CSS for your home-page
 .big-cards {
   width: 100%;
-  height: 710px;
+  height: 600px;
   background-color: gray;
+  background-image: url('wave_background.png');
+  background-size: cover;
 }
 
 .intro-card {
-  padding: 250px 30px;
+  padding: 250px 250px;
 }
 
 .white-cards {
   width: 100%;
-  height: 300px;
+  height: 150px;
   background: radial-gradient(circle at 40% 40%, #000000 25%, transparent 26%),radial-gradient(circle at 60% 60%, #00000080 25%, transparent 26%);
         background-size: 3em 3em;
         background-color: #ffffff;
@@ -19,7 +21,7 @@
 }
 
 .discogs-cards {
-  padding: 110px 30px;
+  padding: 30px;
 }
 
 // .carousel-item img {
@@ -33,7 +35,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 710px;
+    height: 600px;
 }
 
 .carousel2 {
@@ -41,7 +43,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 710px;
+  height: 600px;
 }
 
 .carousel3 {
@@ -49,14 +51,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 710px;
+  height: 600px;
 }
 
 .info-container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 710px;
+  height: 600px;
 }
 
 .info-card {
@@ -64,6 +66,19 @@
   padding: 250px 30px;
   background-color: gray;
   text-align: center;
+  background-image: url('side-wave_background-1.png');
+  background-size: cover;
+  color: #ffffff;
+  background-position: center;
+
+}
+
+.info-card-2 {
+  background-image: url('side-wave_background-2.png');
+  background-size: cover;
+  color: #ffffff;
+  background-position: center;
+
 }
 
 // .photo-card {
