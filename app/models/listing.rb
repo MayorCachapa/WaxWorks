@@ -5,7 +5,7 @@ class Listing < ApplicationRecord
   has_many :orders
 
 
-  monetize :price_cents
+  # monetize :price_cents
   
   validates :condition, :sleeve_condition, inclusion: {in: %w(Excellent Good Fair Damaged) }
   validates :condition, :sleeve_condition, :price, :shipping_fee, :comments, :location, presence: true
