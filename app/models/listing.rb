@@ -3,4 +3,5 @@ class Listing < ApplicationRecord
   belongs_to :release
 
   has_many :orders
+
 end
