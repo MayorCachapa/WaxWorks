@@ -1,23 +1,24 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :update, :destroy]  
-  
+  before_action :set_listing, only: [:show, :update, :destroy]
+
   def index
     @listings = Listing.all
   end
 
   def new
     @listing = Listing.new
+    @release = Release.find(params[:release_id])
   end
 
   def create
     @listing = Listing.new(listing_params)
     @listing.user = current_user
-    @listing.release = params[:release_id]
-
+    @listing.release = Release.find(params[:release_id])
+    # raise
     if @listing.save
-      redirect_to listing_path(@listing)
+      redirect_to releases_path
     else
-      render :show, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

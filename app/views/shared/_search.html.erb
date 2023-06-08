@@ -1,0 +1,7 @@
+<%= form_with url: releases_path, method: :get do %>
+    <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Type a keyword"
+    %>
+    <%= submit_tag "Search", name: "", class: "btn btn-primary text-light" %>
+<% end %>
