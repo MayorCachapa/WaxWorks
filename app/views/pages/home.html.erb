@@ -4,13 +4,13 @@
         <p></p>
       <h3 class= "font-weight-bold text-center">Link your Favorite streaming platform, purchase your favorite records & discover  recommendations based on your listening history</h3>
         <p></p>
-      <button type="button" class="btn btn-dark">Connect with Spotify</button>
+      <button type="button" class="btn btn btn-secondary btn-lg btn-dark">Connect with Spotify</button>
   </div>
 </div>
 
 <div class= "white-cards">
   <div class="d-flex flex-column align-items-center discogs-cards">
-    <button type="button" class="btn btn-dark">Connect with Discogs</button>
+    <button type="button" class="btn btn btn-secondary btn-lg btn-dark">Connect with Discogs</button>
   </div>
 </div>
 
@@ -28,8 +28,12 @@
 
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
+
+          <button type="button" class="btn btn btn-secondary btn-lg btn-dark">
+          <%= link_to listings_path do %>
+             Marketplace
+            <% end %>
+            </button>
         </div>
       </div>
       <div class="carousel-item">
@@ -37,8 +41,11 @@
 
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
+          <button type="button" class="btn btn btn-secondary btn-lg btn-dark">
+          <%= link_to releases_path do %>
+              Reccomendations
+          <% end %>
+            </button>
         </div>
       </div>
       <div class="carousel-item">
@@ -46,8 +53,11 @@
 
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
+          <button type="button" class="btn btn btn-secondary btn-lg btn-dark">
+           <%= link_to ownerships_path do %>
+              My Collection
+          <% end %>
+          </button>
         </div>
       </div>
     </div>
@@ -76,7 +86,7 @@
   </div>
   <div class="photo-card">
     <div class= "small-image" >
-    <%= image_tag 'record2.jpg' %>
+    <%= image_tag 'record5.jpg' %>
     </div>
   </div>
 </div>
@@ -89,7 +99,7 @@
 <div class="info-container">
  <div class="photo-card">
     <div class= "small-image" >
-    <%= image_tag 'record2.jpg' %>
+    <%= image_tag 'record6.jpg' %>
     </div>
   </div>
   <div class="info-card">
