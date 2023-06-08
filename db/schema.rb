@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_08_060852) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_08_144946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,7 +28,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_060852) do
     t.bigint "user_id", null: false
     t.string "condition"
     t.string "sleeve_condition"
-    t.float "price"
     t.float "shipping_fee"
     t.text "comments"
     t.boolean "allow_offers", default: true
@@ -37,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_060852) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "release_id", null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["release_id"], name: "index_listings_on_release_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_060852) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "final_price"
+    t.string "checkout_session_id"
     t.index ["listing_id"], name: "index_orders_on_listing_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -60,6 +61,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_060852) do
     t.datetime "updated_at", null: false
     t.index ["release_id"], name: "index_ownerships_on_release_id"
     t.index ["user_id"], name: "index_ownerships_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "release_reviews", force: :cascade do |t|
