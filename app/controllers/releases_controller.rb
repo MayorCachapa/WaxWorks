@@ -3,6 +3,7 @@ class ReleasesController < ApplicationController
 
     def index
       @releases = Release.all
+      @listings = Listing.all
     end
 
     def new
