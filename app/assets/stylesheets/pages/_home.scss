@@ -100,3 +100,11 @@
    height: auto; /* maintain aspect ratio*/
    margin: auto; /*optional centering of image*/
 }
+
+.list-card{
+display: flex;
+flex: 0 0 50%;
+align-items: center;
+justify-content: center;
+background-color: white;
+}
