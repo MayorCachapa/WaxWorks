@@ -14,7 +14,7 @@
  position: relative;
 }
 
-img {
+.release-image img {
   height: 600px;
   width: 600px;
   object-fit: cover;
@@ -33,16 +33,86 @@ img {
 
 .release-information-content {
   height: 540px;
-  width: 100%;
+  width: 96%;
   background-color: #ffffff;
-  margin-top: 30px;
+  margin-top: 3.5%;
   padding: 30px 30px 0 30px;
+
 }
 
 .notes {
   font-size: 12px;
 }
 
-.track-listing  td {
+.notes p {
+  overflow: hidden;
+  max-height: 58px;
+  margin-bottom: 0;
+}
+
+.track-listing td {
   font-size: 12px;
+  padding-right: 10px;
+}
+
+.listings-bar {
+  background-color: #A5ACAF;
+  padding: 10px 20px 10px 20px;
+}
+
+.available-listings {
+  margin: 30px;
+
+}
+
+.listing-card {
+  display: flex;
+  height: 200px;
+  width: auto;
+  margin: 30px;
+  border: solid;
+  border-radius: 0% 100px 100px 0%;
+}
+
+.listing-image {
+  width: 200px;
+}
+
+.listing-image img {
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+}
+
+.listing-album  {
+  margin: 10px;
+  width: 285px;
+}
+
+.listing-details {
+  margin: 10px;
+  width: 350px;
+}
+
+.listing-seller {
+  width: 285px;
+  margin: 10px;
+}
+
+.listing-button {
+  display: block;
+  text-align: center;
+  margin: 15px;
+  width: 170px;
+  height: 170px;
+  border-radius: 85px;
+  border: solid;
+  position: relative;
+  right: -50px;
+}
+
+.listing-button h5 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
