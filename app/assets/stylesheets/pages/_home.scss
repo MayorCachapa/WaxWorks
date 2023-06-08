@@ -11,7 +11,7 @@
 
 .white-cards {
   width: 100%;
-  height: 360px;
+  height: 300px;
   background: radial-gradient(circle at 40% 40%, #000000 25%, transparent 26%),radial-gradient(circle at 60% 60%, #00000080 25%, transparent 26%);
         background-size: 3em 3em;
         background-color: #ffffff;
@@ -19,7 +19,7 @@
 }
 
 .discogs-cards {
-  padding: 160px 30px;
+  padding: 110px 30px;
 }
 
 // .carousel-item img {
@@ -107,4 +107,9 @@ flex: 0 0 50%;
 align-items: center;
 justify-content: center;
 background-color: white;
+}
+
+
+button {
+  text-decoration: none;
 }
