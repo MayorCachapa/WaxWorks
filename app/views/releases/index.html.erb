@@ -1,0 +1,125 @@
+<div class="sort-bar">
+  <div>
+    <h4><strong>All Available Releases (100)</strong></h4>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Sort By:</button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+</div>
+
+<div class="filter-and-releases">
+  <%# _filter partial is rendered %>
+  <%= render "shared/filter" %>
+  <div class="releases">
+  <% for listing in @listings %>
+    <div class="release-card">
+      <div class="album-thumbnail">
+        <%= image_tag "#{listing.release.url}" %>
+      </div>
+      <div class="album-content">
+        <div class="top">
+          <div class="album-copy">
+            <h4><%= listing.release.title %></h4>
+            <p><%= listing.release.artist%></p>
+          </div>
+          <i class="fa-regular fa-heart fa-2x" style="color: #000000;"></i>
+        </div>
+        <div class="bottom">
+          <div class="availability">
+            <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
+            <% if listing.availability %>
+            <p>AVAILABLE</p>
+            <% else %>
+            <p>NOT AVAILABLE</p>
+            <% end %>
+          </div>
+          <div class="market-value">
+            <p>Market Value</p>
+            <p>$1.00 to $100.00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <div class="release-card">
+      <div class="album-thumbnail">
+        <%= image_tag "album-thumbnail.png" %>
+      </div>
+      <div class="album-content">
+        <div class="top">
+          <div class="album-copy">
+            <h4>Album Name</h4>
+            <p>Artist Name</p>
+          </div>
+          <i class="fa-regular fa-heart fa-2x" style="color: #000000;"></i>
+        </div>
+        <div class="bottom">
+          <div class="availability">
+            <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
+            <p>AVAILABLE</p>
+          </div>
+          <div class="market-value">
+            <p>Market Value</p>
+            <p>$1.00 to $100.00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="release-card">
+      <div class="album-thumbnail">
+        <%= image_tag "album-thumbnail.png" %>
+      </div>
+      <div class="album-content">
+        <div class="top">
+          <div class="album-copy">
+            <h4>Album Name</h4>
+            <p>Artist Name</p>
+          </div>
+          <i class="fa-regular fa-heart fa-2x" style="color: #000000;"></i>
+        </div>
+        <div class="bottom">
+          <div class="availability">
+            <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
+            <p>AVAILABLE</p>
+          </div>
+          <div class="market-value">
+            <p>Market Value</p>
+            <p>$1.00 to $100.00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="release-card">
+      <div class="album-thumbnail">
+        <%= image_tag "album-thumbnail.png" %>
+      </div>
+      <div class="album-content">
+        <div class="top">
+          <div class="album-copy">
+            <h4>Album Name</h4>
+            <p>Artist Name</p>
+          </div>
+          <i class="fa-regular fa-heart fa-2x" style="color: #000000;"></i>
+        </div>
+        <div class="bottom">
+          <div class="availability">
+            <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
+            <p>AVAILABLE</p>
+          </div>
+          <div class="market-value">
+            <p>Market Value</p>
+            <p>$1.00 to $100.00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="release-card"></div>
+    <div class="release-card"></div>
+    <div class="release-card"></div>
+  </div>
+</div>
