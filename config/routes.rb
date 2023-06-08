@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :listings, only: [ :index, :new, :create, :show ]
 
-  resources :orders, only: [ :show, :create, :index ]
+  resources :orders, only: [ :show, :create, :index, :edit ]
 
   resources :favorites, only: [ :index, :update ]
 
@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   end
 
   resources :listings do
-    resources :orders, only: [ :create ]
+    resources :orders, only: [ :new, :create ]
   end
 end

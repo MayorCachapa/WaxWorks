@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_07_125714) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_08_060852) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_125714) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "final_price"
     t.index ["listing_id"], name: "index_orders_on_listing_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -76,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_125714) do
     t.datetime "updated_at", null: false
     t.string "artist"
     t.string "title"
+    t.string "url"
   end
 
   create_table "spotify_albums", force: :cascade do |t|
