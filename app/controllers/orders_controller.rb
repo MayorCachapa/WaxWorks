@@ -20,12 +20,14 @@ class OrdersController < ApplicationController
 
       @order.save
 
+      price = Stripe::Price.create({
+        unit_amount:  listing.price_cents,
+        currency: 'eur',
+        product_data:  {name: listing.release.title
+      }})
+
       session = Stripe::Checkout::Session.create({
-        line_items: [{
-          # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
-          price: 'price_1NGkDDI65PyGesk2B8kxPQoZ',
-          quantity: 1,
-        }],
+        line_items: [{price: price.id, quantity: 1}],
         mode: 'payment',
         success_url: order_url(@order),
         cancel_url: order_url(@order)
