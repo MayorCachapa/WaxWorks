@@ -77,6 +77,10 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'money-rails'
+
+gem 'stripe'
+
 gem "rack-user_agent", "~> 0.5.3"
 
 gem "httparty", "~> 0.21.0"
