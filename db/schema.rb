@@ -85,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_144946) do
     t.datetime "updated_at", null: false
     t.string "artist"
     t.string "title"
+    t.string "url"
   end
 
   create_table "spotify_albums", force: :cascade do |t|
