@@ -6,6 +6,11 @@ class ReleasesController < ApplicationController
   def index
     @releases = Release.all
     @listings = Listing.all
+
+    if params[:query].present?
+      sql = 'title ILIKE :query or artist ILIKE :query'
+      @releases = @releases.where(sql, query: "%#{params[:query]}%")
+    end
   end
 
   def new
