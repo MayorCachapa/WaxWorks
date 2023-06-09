@@ -24,6 +24,17 @@ albums.each do |album|
     response_masters = HTTParty.get("https://api.discogs.com/masters/#{master_id}")
     data_masters = JSON.parse(response_masters.body)
 
+    release_id = data_masters['main_release']
+
+    response_release = HTTParty.get("https://api.discogs.com/releases/#{release_id}")
+    data_release = JSON.parse(response_release.body)
+
+    description = data_release['notes']
+
+    if description.nil?
+      description = "https://www.discogs.com/master/#{master_id}"
+    end
+    
     if data_masters['tracklist']
       tracklist = data_masters['tracklist']
       track_titles = tracklist.map {|track| track['title']}
@@ -36,7 +47,7 @@ albums.each do |album|
     artist = result[0].strip
     release_record = result[1].strip
     
-    release = Release.create(artist: artist, title: release_record, url: url, format: format, tracklist: track_titles)
+    release = Release.create(artist: artist, title: release_record, url: url, format: format, tracklist: track_titles, description: description)
     
     if release.nil?
       puts "Error with Release"
@@ -62,10 +73,10 @@ end
 
 
 
-# releases = Release.all
-# for release in releases
-#   listing = Listing.create(user_id: user.id, condition: "Excelent", sleeve_condition: "Excelent", price_cents: 1599, shipping_fee: 3.50, comments:'Classic', location: user.location, release: release)
-# end
+releases = Release.all
+for release in releases
+  listing = Listing.create(user_id: user.id, condition: "Excelent", sleeve_condition: "Excelent", price_cents: 1599, shipping_fee: 3.50, comments:'Classic', location: user.location, release: release)
+end
 
 puts 'Finished successfully'
 

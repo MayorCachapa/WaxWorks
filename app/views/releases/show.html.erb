@@ -1,6 +1,6 @@
 <div class="release-master">
   <div class="release-image">
-    <%= image_tag 'release-image.jpg' %>
+    <%= image_tag @release.url %>
   </div>
   <div class="release-information">
     <div class="release-information-content">
@@ -19,7 +19,12 @@
       </table>
       <br>
       <h5><strong>Description</strong></h5>
-        <div class="notes">
+      <% if @release.description.include?('https') %>
+        <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
+      <% else %>
+        <%= @release.description %>
+      <% end %>
+        <%# <div class="notes">
           European second and later repress version, which shows a correctly oriented inner sleeve.
           For the first press with upside-down printed and assembled inner sleeve, please see here. Use that sub, if this matches your version.
 
@@ -37,7 +42,7 @@
         <br>
           Made and printed in Germany.
           Distributed by BMG Ariola.
-        </div>
+        </div> %>
       <br>
       <h5><strong>Track Listing</strong></h5>
       <table class="track-listing">
