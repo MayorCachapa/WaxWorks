@@ -1,10 +1,8 @@
 class Listing < ApplicationRecord
   belongs_to :user
   belongs_to :release
-
   has_many :orders
-
-
+  
   monetize :price_cents
   
   validates :condition, :sleeve_condition, inclusion: {in: %w(Excellent Good Fair Damaged) }

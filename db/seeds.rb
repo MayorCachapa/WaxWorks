@@ -95,7 +95,7 @@ puts 'Finished successfully'
     # end
 
     # puts artist_name
-    
+
 # Validations for later
     # if results.any?
     #     artist_album = results.first['title']
