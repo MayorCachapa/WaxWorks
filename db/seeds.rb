@@ -30,11 +30,12 @@ albums.each do |album|
     data_release = JSON.parse(response_release.body)
 
     description = data_release['notes']
+    date = data_release['released_formatted']
 
     if description.nil?
       description = "https://www.discogs.com/master/#{master_id}"
     end
-    
+
     if data_masters['tracklist']
       tracklist = data_masters['tracklist']
       track_titles = tracklist.map {|track| track['title']}
@@ -47,7 +48,15 @@ albums.each do |album|
     artist = result[0].strip
     release_record = result[1].strip
     
-    release = Release.create(artist: artist, title: release_record, url: url, format: format, tracklist: track_titles, description: description)
+    release = Release.create(
+      artist: artist, 
+      title: release_record, 
+      url: url, 
+      format: format, 
+      tracklist: track_titles, 
+      description: description,
+      date: date
+    )
     
     if release.nil?
       puts "Error with Release"
@@ -70,8 +79,6 @@ albums.each do |album|
     end
   end
 end
-
-
 
 releases = Release.all
 for release in releases

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_09_071950) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_09_080731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_071950) do
     t.string "format"
     t.text "tracklist", default: [], array: true
     t.text "description"
+    t.string "date"
   end
 
   create_table "spotify_albums", force: :cascade do |t|
