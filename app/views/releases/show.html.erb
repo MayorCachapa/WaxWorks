@@ -1,3 +1,7 @@
+<%# ////////////////////////////
+////// Release Details /////////
+//////////////////////////// %>
+
 <div class="release-master">
   <div class="release-image">
     <%= image_tag @release.url %>
@@ -19,6 +23,27 @@
       </table>
       <br>
       <h5><strong>Description</strong></h5>
+<<<<<<< HEAD
+        <div class="notes">
+          <p>
+            European second and later repress version, which shows a correctly oriented inner sleeve.
+            For the first press with upside-down printed and assembled inner sleeve, please see here. Use that sub, if this matches your version.
+          <br>
+            Recorded at Sound City, Van Nuys, CA
+            Mixed at Scream, Studio City, CA
+            Mastered at Masterdisk, New York City, NY
+          <br>
+            Catalog# on labels "GEF 24 425", on inner sleeve "GEF 24425-8"
+            Secondary catalog# "DGC 24425", on labels "DGC-24 425"
+          <br>
+            Produced by special arrangement with Sub Pop Records.
+            © & ℗ 1991 The David Geffen Company, an MCA Company.
+          <br>
+            Made and printed in Germany.
+            Distributed by BMG Ariola.
+          </p>
+        </div>
+=======
       <div class="notes">
       <% if @release.description.include?('https') %>
         <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
@@ -26,7 +51,28 @@
         <%= @release.description %>
       <% end %>
       </div>
+>>>>>>> master
       <br>
+
+<%# //////// Collapsible - to be implemented //////
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+         <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Collapsible Group Item #1
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+      </div>
+///////////////////////////////////////////////// %>
+
       <h5><strong>Track Listing</strong></h5>
       <table class="track-listing">
         <% for track in @release.tracklist %>
@@ -59,6 +105,42 @@
           <td>Something In The Way</td>
         </tr> %>
       </table>
+    </div>
+  </div>
+</div>
+
+<%# ////////////////////////////
+////// Listings Bar/////////
+//////////////////////////// %>
+
+<div class="listings-bar">
+  <div>
+    <h4><strong>Available Listings for Album Name (100)</strong></h4>
+  </div>
+</div>
+
+<%# ////////////////////////////
+////// Listings /////////
+//////////////////////////// %>
+
+<div class="avilable-listings">
+  <div class="listing-card">
+    <div class="listing-image">
+      <%= image_tag 'release-image.jpg' %>
+    </div>
+    <div class="listing-album">
+      <h3><strong>Album Name</strong></h3>
+      <h5><strong>Artist Name</strong></h5>
+    </div>
+    <div class="listing-details">
+      <h5><strong>Condition</strong></h5>
+    </div>
+    <div class="listing-seller">
+      <h5><strong>Seller</strong></h5>
+    </div>
+    <div class="listing-button">
+      <i class="fa-solid fa-cart-shopping fa-2xl p-3 mt-5" style="color: #000000;"></i>
+      <h5 class="mt-3"><strong><%= button_to "$25.99", orders_path %></strong></h5>
     </div>
   </div>
 </div>
