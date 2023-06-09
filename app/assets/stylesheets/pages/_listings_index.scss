@@ -58,23 +58,23 @@
   display: block;
 }
 
-.filter-and-releases {
+.filter-and-listings {
   display: flex;
   padding: 0 5px 0 5px;
 }
 
-.releases {
+.listings {
   display: flex;
   flex-wrap: wrap;
 }
 
-.release-card {
+.listing-card {
   height: 570px;
   width: 416px;
   background-color: white;
 }
 
-.release-card:hover {
+.listing-card:hover {
   border: solid;
 }
 
@@ -85,14 +85,13 @@
   object-fit: cover;
 }
 
-.release-card:hover img {
+.listing-card:hover img {
   opacity: 0.33;
 }
 
 .album-content {
   display: block;
   justify-content: space-between;
-
 }
 
 .album-content .top {
