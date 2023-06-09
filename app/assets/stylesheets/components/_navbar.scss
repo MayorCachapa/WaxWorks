@@ -17,9 +17,9 @@
 .navbar {
   height: 66px;
   padding-bottom: 0;
-  padding-top: 7;
+  padding-top: 0;
   position: fixed;
-  top: 0;
+  top: 36px;
   z-index: 1030;
   width: 100%;
 }
@@ -76,4 +76,15 @@
   font-weight: bold;
   border-color: black;
   background-color: #A5ACAF;
+}
+
+.loginbar{
+  position: fixed;
+  background-color: gray;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  height: 36px ;
+  color: black;
+  justify-content: end;
 }
