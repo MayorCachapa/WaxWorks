@@ -2,8 +2,8 @@
 
 <div class="card p-5 mb-3">
     <%= simple_form_for [@release, @listing] do |f| %>
-    <%=f.input "condition"%>
-    <%=f.input "sleeve_condition"%>
+    <%=f.input "condition", as: :radio_buttons, collection: %w(Excellent Good Fair Damaged) %>
+    <%=f.input "sleeve_condition", as: :radio_buttons, collection: %w(Excellent Good Fair Damaged)%>
     <%=f.input "price_cents"%>
     <%=f.input "shipping_fee"%>
     <%=f.input "comments"%>
