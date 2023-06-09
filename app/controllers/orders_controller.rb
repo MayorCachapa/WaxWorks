@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
       @order.save
 
       price = Stripe::Price.create({
-        unit_amount:  listing.price_cents,
+        unit_amount:  (listing.price_cents * 100).to_i,
         currency: 'eur',
         product_data:  {name: listing.release.title
       }})
