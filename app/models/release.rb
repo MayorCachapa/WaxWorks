@@ -4,10 +4,9 @@ class Release < ApplicationRecord
   has_many :favorites
   has_many :ownerships
   has_many :listings
+  # private
 
-  private
-
-  def discog_validation
+  # def discog_validation
     
-  end
+  # end
 end
