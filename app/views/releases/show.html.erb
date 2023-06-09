@@ -93,7 +93,7 @@
 
 <div class="listings-bar">
   <div>
-    <h4><strong>Available Listings for Album Name (100)</strong></h4>
+    <h4><strong>Available Listings for Album Name (<%= @release.listings.count %>)</strong></h4>
   </div>
 </div>
 
@@ -101,24 +101,27 @@
 ////// Listings /////////
 //////////////////////////// %>
 
+<% for listing in @release.listings %>
 <div class="avilable-listings">
   <div class="listing-card">
     <div class="listing-image">
-      <%= image_tag 'release-image.jpg' %>
+      <%= image_tag @release.url %>
     </div>
     <div class="listing-album">
-      <h3><strong>Album Name</strong></h3>
-      <h5><strong>Artist Name</strong></h5>
+      <h3><strong><%= listing.release.title %></strong></h3>
+      <h5><strong><%= listing.release.artist %></strong></h5>
     </div>
     <div class="listing-details">
-      <h5><strong>Condition</strong></h5>
+      <h5><strong>Condition: <%= listing.condition %></strong></h5>
+      <h5><strong>Sleeve Condition: <%= listing.sleeve_condition %></strong></h5>
     </div>
     <div class="listing-seller">
-      <h5><strong>Seller</strong></h5>
+      <h5><strong>Seller: <%= listing.user.first_name %> <%= listing.user.last_name %></strong></h5>
     </div>
     <div class="listing-button">
       <i class="fa-solid fa-cart-shopping fa-2xl p-3 mt-5" style="color: #000000;"></i>
-      <h5 class="mt-3"><strong><%= button_to "$25.99", orders_path %></strong></h5>
+      <h5 class="mt-3"><strong><%= link_to listing.price_cents, new_listing_order_path(listing) %></strong></h5>
     </div>
   </div>
 </div>
+<% end %>
