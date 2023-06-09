@@ -23,27 +23,6 @@
       </table>
       <br>
       <h5><strong>Description</strong></h5>
-<<<<<<< HEAD
-        <div class="notes">
-          <p>
-            European second and later repress version, which shows a correctly oriented inner sleeve.
-            For the first press with upside-down printed and assembled inner sleeve, please see here. Use that sub, if this matches your version.
-          <br>
-            Recorded at Sound City, Van Nuys, CA
-            Mixed at Scream, Studio City, CA
-            Mastered at Masterdisk, New York City, NY
-          <br>
-            Catalog# on labels "GEF 24 425", on inner sleeve "GEF 24425-8"
-            Secondary catalog# "DGC 24425", on labels "DGC-24 425"
-          <br>
-            Produced by special arrangement with Sub Pop Records.
-            © & ℗ 1991 The David Geffen Company, an MCA Company.
-          <br>
-            Made and printed in Germany.
-            Distributed by BMG Ariola.
-          </p>
-        </div>
-=======
       <div class="notes">
       <% if @release.description.include?('https') %>
         <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
@@ -51,7 +30,6 @@
         <%= @release.description %>
       <% end %>
       </div>
->>>>>>> master
       <br>
 
 <%# //////// Collapsible - to be implemented //////
