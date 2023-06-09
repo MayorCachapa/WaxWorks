@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_080731) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "release_id", null: false
-    t.float "price_cents", default: 0, null: false
+    t.float "price_cents", default: 0.0, null: false
     t.index ["release_id"], name: "index_listings_on_release_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
