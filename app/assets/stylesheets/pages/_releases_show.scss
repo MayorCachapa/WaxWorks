@@ -37,11 +37,15 @@
   background-color: #ffffff;
   margin-top: 3.5%;
   padding: 30px 30px 0 30px;
-
 }
 
 .notes {
   font-size: 12px;
+  display: block;
+  height: 100px;
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis;
 }
 
 .notes p {
@@ -50,7 +54,14 @@
   margin-bottom: 0;
 }
 
-.track-listing td {
+.track-listing ol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 120px;
+}
+
+.track-listing li {
   font-size: 12px;
   padding-right: 10px;
 }
@@ -62,7 +73,6 @@
 
 .available-listings {
   margin: 30px;
-
 }
 
 .listing-card {
@@ -80,7 +90,7 @@
 }
 
 .listing-image img {
-  height: 200px;
+  height: 100%;
   width: auto;
   object-fit: contain;
 }
@@ -117,5 +127,13 @@
 }
 
 .listing-button a {
+  color: black;
+}
+.listing-button:hover {
+  border-color: #394867;
+  border-width: 8px;
+}
+
+.listing-button:hover a {
   color: black;
 }
