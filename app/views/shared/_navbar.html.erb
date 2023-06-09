@@ -1,3 +1,18 @@
+<div class="loginbar d-flex flex-row-reverse">
+<% if user_signed_in? %>
+  <%= link_to "Hello #{current_user.first_name}!" , listings_path, class: "px-2 pt-1"%>
+    <h6 class="pt-2">|</h6>
+  <%= link_to "Add a Listing", new_listing_path, class: "px-2 pt-1"%>
+
+<% else %>
+  <%= link_to "Sign Up", new_user_session_path, class: "px-2 pt-1"%>
+    <h6 class="pt-2">|</h6>
+  <%= link_to "Add a Listing", new_listing_path, class: "px-2 pt-1"%>
+<% end %>
+</div>
+
+
+
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-between">
   <div class="container-fluid justify-content-between">
     <div class= "navbar-brand">

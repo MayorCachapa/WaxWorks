@@ -19,20 +19,68 @@ class ReleasesController < ApplicationController
 
   def create
     # raise
-    response = HTTParty.get("https://api.discogs.com/database/search?q=#{params[:release][:title]}&token=#{ENV['DISCOG_TOKEN']}")
+    response = HTTParty.get("https://api.discogs.com/database/search?q=#{params[:release][:artist]} #{params[:release][:title]}&token=#{ENV['DISCOG_TOKEN']}")
     data = JSON.parse(response.body)
-
-    if data['results'].any?
-      result = data['results'].first['title'].split(' - ')
-      url = data['results'].first['cover_image']
+    data = JSON.parse(response.body)
+    results = data['results']
+  
+    if results.any?
+      result = results.first['title'].split(' - ')
+      format = results.first['format']
+      
+      master_id = results.first['master_id']
+  
+      response_masters = HTTParty.get("https://api.discogs.com/masters/#{master_id}")
+      data_masters = JSON.parse(response_masters.body)
+  
+      release_id = data_masters['main_release']
+  
+      response_release = HTTParty.get("https://api.discogs.com/releases/#{release_id}")
+      data_release = JSON.parse(response_release.body)
+  
+      description = data_release['notes']
+      date = data_release['released_formatted']
+  
+      if description.nil?
+        description = "https://www.discogs.com/master/#{master_id}"
+      end
+  
+      if data_masters['tracklist']
+        tracklist = data_masters['tracklist']
+        track_titles = tracklist.map {|track| track['title']}
+        # puts track_titles
+      end
+  
+      format = format.nil? ? 'Unknown' : format.join(', ')
+  
+      url = results.first['cover_image']
       artist = result[0].strip
-      title = result[1].strip
+      artist_params = params[:release][:artist]
 
+      if artist != artist_params
+        artist = artist_params
+      end
+      
+      if result[1].nil?
+        render :new, :unprocessable_entity
+      else
+        title = result[1].strip
+      end      
+      
       @release = Release.find_by(artist: artist, title: title)
       if @release
         redirect_to new_release_listing_path(@release)
       else
-        @release = Release.new(artist: artist, title: title, url: url)
+        @release = Release.create(
+          artist: artist, 
+          title: title, 
+          url: url, 
+          format: format, 
+          tracklist: track_titles, 
+          description: description,
+          date: date
+        )
+        
         if @release.save
           redirect_to new_release_listing_path(@release)
         else

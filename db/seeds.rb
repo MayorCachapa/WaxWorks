@@ -15,7 +15,7 @@ albums.each do |album|
   data = JSON.parse(response.body)
   results = data['results']
 
-  if data['results'].any?
+  if results.any?
     result = results.first['title'].split(' - ')
     format = results.first['format']
     
