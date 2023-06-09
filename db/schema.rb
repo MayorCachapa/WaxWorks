@@ -9,7 +9,8 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema[7.0].define(version: 2023_06_08_144946) do
+
+ActiveRecord::Schema[7.0].define(version: 2023_06_09_080731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_144946) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "release_id", null: false
-    t.integer "price_cents", default: 0, null: false
+    t.float "price_cents", default: 0.0, null: false
     t.index ["release_id"], name: "index_listings_on_release_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
@@ -85,6 +86,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_144946) do
     t.string "artist"
     t.string "title"
     t.string "url"
+    t.string "format"
+    t.text "tracklist", default: [], array: true
+    t.text "description"
+    t.string "date"
   end
 
   create_table "spotify_albums", force: :cascade do |t|

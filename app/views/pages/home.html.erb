@@ -2,16 +2,17 @@
     <div class="d-flex flex-column align-items-center intro-card">
       <h1 class= "font-weight-bold text-center">Everything for the Modern Vinyl Collector</h1>
         <p></p>
-      <h3 class= "font-weight-bold text-center">Link your Favorite streaming platform, purchase your favorite records & discover  recommendations based on your listening history</h3>
+      <h4 class= "font-weight-bold text-center">Link your Favorite streaming platform, purchase your favorite records & discover  recommendations based on your listening history</h4>
         <p></p>
-      <button type="button" class="btn btn btn-secondary btn-lg btn-dark">Connect with Spotify</button>
+      <div class="d-flex flex-row align-items-center discogs-cards">
+        <button type="button" class="btn btn btn-secondary btn-lg btn-dark mx-3">Connect with Spotify</button>
+        <button type="button" class="btn btn btn-secondary btn-lg btn-dark mx-3">Import your Discogs</button>
+      </div>
   </div>
 </div>
 
 <div class= "white-cards">
-  <div class="d-flex flex-column align-items-center discogs-cards">
-    <button type="button" class="btn btn btn-secondary btn-lg btn-dark">Connect with Discogs</button>
-  </div>
+
 </div>
 
 <div class= "big-cards">
@@ -23,40 +24,35 @@
     </div>
     <div class="carousel-inner ">
       <div class="carousel-item active ">
-
         <div class= "carousel1">
-
         </div>
         <div class="carousel-caption d-none d-md-block">
-
           <button type="button" class="btn btn btn-secondary btn-lg btn-dark">
-          <%= link_to listings_path do %>
+            <%= link_to listings_path do %>
              Marketplace
             <% end %>
-            </button>
+          </button>
         </div>
       </div>
       <div class="carousel-item">
         <div class= "carousel2">
-
         </div>
         <div class="carousel-caption d-none d-md-block">
           <button type="button" class="btn btn btn-secondary btn-lg btn-dark">
-          <%= link_to releases_path do %>
+            <%= link_to releases_path do %>
               Reccomendations
-          <% end %>
-            </button>
+            <% end %>
+          </button>
         </div>
       </div>
       <div class="carousel-item">
         <div class= "carousel3">
-
         </div>
         <div class="carousel-caption d-none d-md-block">
           <button type="button" class="btn btn btn-secondary btn-lg btn-dark">
-           <%= link_to ownerships_path do %>
+            <%= link_to ownerships_path do %>
               My Collection
-          <% end %>
+            <% end %>
           </button>
         </div>
       </div>
@@ -81,8 +77,8 @@
 
 <div class="info-container">
   <div class="info-card">
-   <h1 class= "font-weight-bold text-center">Vinyl's One Source of Truth</h1>
-    <h3 class= "font-weight-bold text-center">Whether you are just starting your collection or you are a life long collector, WaxWorks recommendations can fine an essential vinyl record for any collection</h3>
+    <h1 class= "font-weight-bold text-center">Vinyl's One Source of Truth</h1>
+    <h4 class= "font-weight-bold text-center">Whether you are just starting your collection or you are a life long collector, WaxWorks recommendations can fine an essential vinyl record for any collection</h4>
   </div>
   <div class="photo-card">
     <div class= "small-image" >
@@ -102,9 +98,9 @@
     <%= image_tag 'record6.jpg' %>
     </div>
   </div>
-  <div class="info-card">
-   <h1 class= "font-weight-bold text-center">Buying Vinyl has never been easier</h1>
-    <h3 class= "font-weight-bold text-center">Knowing what record you want that fits your taste, is curated and built to make sure that your never have choice paralysis ever again!</h3>
+  <div class="info-card info-card-2">
+    <h1 class= "font-weight-bold text-center">Buying Vinyl has never been easier</h1>
+    <h4 class= "font-weight-bold text-center">Knowing what record you want that fits your taste, is curated and built to make sure that your never have choice paralysis ever again!</h4>
   </div>
 </div>
 

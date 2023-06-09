@@ -2,7 +2,13 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :update, :destroy]
 
   def index
+    @releases = Release.all
+
     @listings = Listing.all
+    if params[:query].present?
+      sql = 'title ILIKE :query or artist ILIKE :query'
+      @releases = @releases.where(sql, query: "%#{params[:query]}%")
+    end
   end
 
   def new
@@ -37,7 +43,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:condition, :sleeve_condition, :price, :shipping_fee, :comments, :location)
+    params.require(:listing).permit(:condition, :sleeve_condition, :price_cents, :shipping_fee, :comments, :location)
   end
 
   def set_listing
