@@ -57,12 +57,12 @@ class ReleasesController < ApplicationController
       artist = result[0].strip
       artist_params = params[:release][:artist]
 
-      if artist != artist_params
-        artist = artist_params
+      if artist.downcase != artist_params.downcase
+        artist = artist_params.capitalize
       end
       
       if result[1].nil?
-        render :new, :unprocessable_entity
+        render :new, status: :unprocessable_entity
       else
         title = result[1].strip
       end      
