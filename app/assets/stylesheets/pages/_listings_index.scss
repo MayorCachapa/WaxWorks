@@ -68,13 +68,13 @@
   flex-wrap: wrap;
 }
 
-.listing-card {
+.listing-cards {
   height: 570px;
   width: 416px;
   background-color: white;
 }
 
-.listing-card:hover {
+.listing-cards:hover {
   border: solid;
 }
 
@@ -85,7 +85,7 @@
   object-fit: cover;
 }
 
-.listing-card:hover img {
+.listing-cards:hover img {
   opacity: 0.33;
 }
 
