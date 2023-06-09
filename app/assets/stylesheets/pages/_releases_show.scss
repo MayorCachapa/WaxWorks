@@ -67,6 +67,7 @@
 
 .listing-card {
   display: flex;
+  justify-content: space-between;
   height: 200px;
   width: auto;
   margin: 30px;
@@ -107,8 +108,6 @@
   height: 170px;
   border-radius: 85px;
   border: solid;
-  position: relative;
-  right: -50px;
 }
 
 .listing-button h5 {
