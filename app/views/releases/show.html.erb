@@ -4,13 +4,13 @@
   </div>
   <div class="release-information">
     <div class="release-information-content">
-      <h3><strong>Album Name</strong></h3>
-      <h5><strong>Artist Name</strong></h5>
+      <h3><strong><%= @release.title %></strong></h3>
+      <h5><strong><%= @release.artist %></strong></h5>
       <br>
       <table>
         <tr>
           <td>Format:</td>
-          <td>Vinyl, LP, Album, Repress</td>
+          <td><%= @release.format %></td>
         </tr>
         <tr>
           <td>Year:</td>
@@ -41,11 +41,12 @@
       <br>
       <h5><strong>Track Listing</strong></h5>
       <table class="track-listing">
+        <% for track in @release.tracklist %>
         <tr>
-          <td><strong>Side A</strong></td>
-          <td><strong>Side B</strong></td>
+            <td><%= track %></td>
         </tr>
-        <tr>
+        <% end %>
+        <%# <tr>
           <td>Smells Like Teen Spirit</td>
           <td>Territorial Pissings</td>
         </tr>
@@ -68,7 +69,7 @@
         <tr>
           <td>Polly</td>
           <td>Something In The Way</td>
-        </tr>
+        </tr> %>
       </table>
     </div>
   </div>

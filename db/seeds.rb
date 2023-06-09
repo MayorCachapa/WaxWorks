@@ -8,22 +8,64 @@ user = User.create(email:'test@gmail.com', password:'secret', location:'Caracas,
 # user.save
 
 albums = ['And Justice for All', 'Nevermind', 'Peace Sells', 'Crack the Skye', 'New Levels New Devils']
+
 albums.each do |album|
   response = HTTParty.get("https://api.discogs.com/database/search?q=#{album}&token=#{ENV['DISCOG_TOKEN']}")
+
   data = JSON.parse(response.body)
+  results = data['results']
+
   if data['results'].any?
-    result = data['results'].first['title'].split('-')
-    url = data['results'].first['cover_image']
+    result = results.first['title'].split(' - ')
+    format = results.first['format']
+    
+    master_id = results.first['master_id']
+
+    response_masters = HTTParty.get("https://api.discogs.com/masters/#{master_id}")
+    data_masters = JSON.parse(response_masters.body)
+
+    if data_masters['tracklist']
+      tracklist = data_masters['tracklist']
+      track_titles = tracklist.map {|track| track['title']}
+      # puts track_titles
+    end
+
+    format = format.nil? ? 'Unknown' : format.join(', ')
+
+    url = results.first['cover_image']
     artist = result[0].strip
-    release = result[1].strip
-    Release.create(artist: artist, title: release, url: url)
+    release_record = result[1].strip
+    
+    release = Release.create(artist: artist, title: release_record, url: url, format: format, tracklist: track_titles)
+    
+    if release.nil?
+      puts "Error with Release"
+    end
+
+    if release.persisted?
+      listing = Listing.create(
+        user_id: user.id,
+        condition: 'Excellent',
+        sleeve_condition: 'Excellent',
+        price_cents: 15.99,
+        shipping_fee: 3.50,
+        comments: 'Classic',
+        location: user.location,
+        release: release
+      )
+      if listing.nil?
+        puts "Error with Listing"
+      end
+    end
   end
 end
 
-releases = Release.all
-for release in releases
-  listing = Listing.create(user_id: user.id, condition: "Excelent", sleeve_condition: "Excelent", price: 15.99, shipping_fee: 3.50, comments:'Classic', location: user.location, release: release)
-end
+
+
+# releases = Release.all
+# for release in releases
+#   listing = Listing.create(user_id: user.id, condition: "Excelent", sleeve_condition: "Excelent", price_cents: 1599, shipping_fee: 3.50, comments:'Classic', location: user.location, release: release)
+# end
 
 puts 'Finished successfully'
 
