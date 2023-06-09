@@ -18,28 +18,35 @@ class ReleasesController < ApplicationController
   end
 
   def create
-    # raise
-    response = HTTParty.get("https://api.discogs.com/database/search?q=#{params[:release][:artist]} #{params[:release][:title]}&token=#{ENV['DISCOG_TOKEN']}")
+    artist_params = params[:release][:artist]
+    title_params = params[:release][:title]
+    response = HTTParty.get("https://api.discogs.com/database/search?q=#{artist_params} #{title_params}&token=#{ENV['DISCOG_TOKEN']}")
     data = JSON.parse(response.body)
-    data = JSON.parse(response.body)
+    
     results = data['results']
-  
+    
     if results.any?
       result = results.first['title'].split(' - ')
+      result[0].downcase != artist_params.downcase ? artist = artist_params.capitalize : artist = result[0]
+      title = result[1]
+      
       format = results.first['format']
+      format = format.nil? ? 'Unknown' : format.join(', ')
       
       master_id = results.first['master_id']
-  
       response_masters = HTTParty.get("https://api.discogs.com/masters/#{master_id}")
       data_masters = JSON.parse(response_masters.body)
-  
+      
       release_id = data_masters['main_release']
-  
+      
       response_release = HTTParty.get("https://api.discogs.com/releases/#{release_id}")
       data_release = JSON.parse(response_release.body)
-  
       description = data_release['notes']
       date = data_release['released_formatted']
+      
+      
+      url = results.first['cover_image']
+    
   
       if description.nil?
         description = "https://www.discogs.com/master/#{master_id}"
@@ -48,47 +55,28 @@ class ReleasesController < ApplicationController
       if data_masters['tracklist']
         tracklist = data_masters['tracklist']
         track_titles = tracklist.map {|track| track['title']}
-        # puts track_titles
       end
-  
-      format = format.nil? ? 'Unknown' : format.join(', ')
-  
-      url = results.first['cover_image']
-      artist = result[0].strip
-      artist_params = params[:release][:artist]
-
-      if artist.downcase != artist_params.downcase
-        artist = artist_params.capitalize
-      end
-      
-      if result[1].nil?
-        render :new, status: :unprocessable_entity
-      else
-        title = result[1].strip
-      end      
       
       @release = Release.find_by(artist: artist, title: title)
       if @release
         redirect_to new_release_listing_path(@release)
-      else
-        @release = Release.create(
-          artist: artist, 
-          title: title, 
-          url: url, 
-          format: format, 
-          tracklist: track_titles, 
-          description: description,
-          date: date
-        )
-        
-        if @release.save
-          redirect_to new_release_listing_path(@release)
-        else
-          render :new, status: :unprocessable_entity
-        end
-      end
-
+      end  
     end
+    
+    @release = Release.new(
+      artist: artist, 
+      title: title, 
+      url: url, 
+      format: format, 
+      tracklist: track_titles, 
+      description: description,
+      date: date
+    )
+    if @release.save
+      redirect_to new_release_listing_path(@release)
+    else
+      render :new, status: :unprocessable_entity
+    end 
   end
 
   def show
