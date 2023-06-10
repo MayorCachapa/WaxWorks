@@ -1,14 +1,14 @@
 @import "components/filter";
 
 .all-releases {
-  display: flex;
   padding: 0;
-  align-items: center;
 }
 
 .releases {
   display: flex;
+  justify-content: start;
   flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .release-card {
@@ -19,6 +19,10 @@
 
 .release-card:hover {
   border: solid;
+}
+
+.album-thumbnail {
+  height: 371px;
 }
 
 .album-thumbnail img {
