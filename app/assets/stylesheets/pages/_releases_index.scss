@@ -1,72 +1,14 @@
 @import "components/filter";
 
-.sort-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #A5ACAF;
-  padding: 10px 20px 10px 20px;
-  margin-bottom: 5px;
-  position: relative;
-  z-index: 1020;
-  width: 100%;
-  margin-top: 102px;
-}
-
-.sort-bar h4 {
-  margin: auto;
-}
-
-.dropbtn {
-  background-color: white;
-  color: black;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  width: 320px;
-  text-align: left;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #ffffff;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
 .all-releases {
-  display: flex;
   padding: 0;
-  align-items: center;
 }
 
 .releases {
   display: flex;
+  justify-content: start;
   flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .release-card {
@@ -77,6 +19,10 @@
 
 .release-card:hover {
   border: solid;
+}
+
+.album-thumbnail {
+  height: 371px;
 }
 
 .album-thumbnail img {
