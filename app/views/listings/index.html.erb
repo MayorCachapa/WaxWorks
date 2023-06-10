@@ -16,32 +16,37 @@
   <%# _filter partial is rendered %>
   <%= render "shared/filter" %>
 
-  <div class="listings">
+  <div class="listings align-content-start">
     <% for release in @releases %>
     <div class="listing-cards">
-      <div class="album-thumbnail">
+      <div class="listing-album-thumbnail">
          <%= link_to url_for(release) do %>
           <%= image_tag release.url %>
         <% end %>
       </div>
-      <div class="album-content">
-        <div class="top">
-          <div class="album-copy">
+      <div class="listing-album-content">
+        <div class="listing-top-content">
+          <div class="listing-album-copy">
             <h4><%= release.title %></h4>
             <p><%= release.artist%></p>
           </div>
           <i class="fa-regular fa-heart fa-2x" style="color: #000000;"></i>
         </div>
-        <div class="bottom">
+        <div class="listing-bottom-content">
           <div class="availability">
-            <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
-            <%# if listing.availability %>
-            <p>AVAILABLE</p>
-            <%# else %>
-            <%# <p>NOT AVAILABLE</p> %>
-            <%# end %>
+            <% if release.listings.size == 0 %>
+              <div class="availability-false">
+                <i class="fa-regular fa-circle-xmark" style="color: #000000;"></i>
+                <p>UNAVAILABLE</p>
+              </div>
+            <% else %>
+              <div class="availability-true">
+                <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
+                <p>AVAILABLE</p>
+              </div>
+            <% end %>
           </div>
-          <div class="market-value">
+          <div class="listing-market-value">
             <p>Market Value</p>
             <p>$1.00 to $100.00</p>
           </div>

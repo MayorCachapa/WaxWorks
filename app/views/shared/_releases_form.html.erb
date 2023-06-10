@@ -1,10 +1,10 @@
-<h1>List your Wax</h1>
+<h1>Tell us the name of the Release</h1>
 
 <div class="card p-5 mb-3">
     <%= simple_form_for @release do |f| %>
-    <%= f.input "title", placeholder: "Black Album" %>
-    <%= f.input "artist", placeholder: "Metallica" %>
-    <%= f.input "date", label: "Year", placeholder: "1991" %>
-    <%= f.submit class:'btn btn btn-secondary btn-lg btn-dar' %>
+    <%= f.input "title", label: "Album Title", placeholder: "Black Album" %>
+    <%= f.input "artist", label: "Artist Name", placeholder: "Metallica" %>
+    <%= f.input "date", label: "Year Released", placeholder: "1991" %>
+    <%= f.submit class:"btn btn-secondary btn-lg btn-dark mx-3" %>
     <% end %>
 </div>
