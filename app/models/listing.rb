@@ -7,7 +7,7 @@ class Listing < ApplicationRecord
   
   validates :condition, :sleeve_condition, inclusion: {in: %w(Excellent Good Fair Damaged) }
   validates :condition, :sleeve_condition, :price_cents, :shipping_fee, :comments, :location, presence: true
-
+  validates :price_cents, :shipping_fee, numericality: { greater_than: 0.0 }
   # before_save :convert_to_cents
 
   # private
