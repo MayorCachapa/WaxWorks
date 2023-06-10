@@ -24,11 +24,11 @@
       <br>
       <h5><strong>Description</strong></h5>
       <div class="notes">
-      <% if @release.description.include?('https') %>
-        <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
-      <% else %>
-        <%= @release.description %>
-      <% end %>
+        <% if @release.description.include?('https') %>
+          <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
+        <% else %>
+          <%= @release.description %>
+        <% end %>
       </div>
       <br>
 
@@ -52,38 +52,17 @@
 ///////////////////////////////////////////////// %>
 
       <h5><strong>Track Listing</strong></h5>
-      <table class="track-listing">
-        <% for track in @release.tracklist %>
-        <tr>
-            <td><%= track %></td>
-        </tr>
-        <% end %>
-        <%# <tr>
-          <td>Smells Like Teen Spirit</td>
-          <td>Territorial Pissings</td>
-        </tr>
-        <tr>
-          <td>In Bloom</td>
-          <td>Drain You</td>
-        </tr>
-        <tr>
-          <td>Come As You Are</td>
-          <td>Lounge Act</td>
-        </tr>
-        <tr>
-          <td>Breed</td>
-          <td>Stay Away</td>
-        </tr>
-        <tr>
-          <td>Lithium</td>
-          <td>On A Plain</td>
-        </tr>
-        <tr>
-          <td>Polly</td>
-          <td>Something In The Way</td>
-        </tr> %>
-      </table>
+      <div class="track-listing">
+        <ol>
+          <% @release.tracklist.each do |track| %>
+
+              <li><%= track %></li>
+
+          <% end %>
+        </ol>
+      </div>
     </div>
+
   </div>
 </div>
 
@@ -112,11 +91,11 @@
       <h5><strong><%= listing.release.artist %></strong></h5>
     </div>
     <div class="listing-details">
-      <h5><strong>Condition: <%= listing.condition %></strong></h5>
-      <h5><strong>Sleeve Condition: <%= listing.sleeve_condition %></strong></h5>
+      <h5><strong>Condition: </strong><%= listing.condition %></h5>
+      <h5><strong>Sleeve Condition: </strong><%= listing.sleeve_condition %></h5>
     </div>
     <div class="listing-seller">
-      <h5><strong>Seller: <%= listing.user.first_name %> <%= listing.user.last_name %></strong></h5>
+      <h5><strong>Seller: </strong><%= listing.user.first_name.capitalize %> <%= listing.user.last_name %></h5>
     </div>
     <div class="listing-button">
       <i class="fa-solid fa-cart-shopping fa-2xl p-3 mt-5" style="color: #000000;"></i>

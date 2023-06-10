@@ -81,22 +81,6 @@
 
 }
 
-// .photo-card {
-//   flex: 0 0 50%;
-
-//   background-color: black;
-// }
-
-// .small-image {
-//   background-image: url('record4.jpg');
-//   background-position:  center;
-//   height: 500px;
-//   width: 500px;
-
-//   object-fit: cover;
-// }
-
-
 .photo-card {
   display: flex;
   flex: 0 0 50%;
@@ -123,7 +107,6 @@ align-items: center;
 justify-content: center;
 background-color: white;
 }
-
 
 button {
   text-decoration: none;

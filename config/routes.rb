@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'users/registrations'}
+  devise_for :users, controllers: { registrations: 'users/registrations', 
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   # devise_for :users, controllers: {
   #   sessions: 'users/sessions'
   # }
@@ -16,7 +18,11 @@ Rails.application.routes.draw do
   resources :listings do
     resources :orders, only: [ :new, :create ]
   end
-  
+
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: :new
+  end
+
   resources :ownerships, only: [ :index, :new, :create ]
 
   resources :listings, only: [ :index, :destroy, :show ]
