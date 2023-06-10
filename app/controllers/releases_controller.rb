@@ -18,16 +18,15 @@ class ReleasesController < ApplicationController
   end
 
   def create
-    artist_params = params[:release][:artist]
-    title_params = params[:release][:title]
-    response = HTTParty.get("https://api.discogs.com/database/search?q=#{artist_params} #{title_params}&token=#{ENV['DISCOG_TOKEN']}")
+    query = "#{params[:release][:artist]} #{params[:release][:title]} #{params[:release][:date]}"
+    response = HTTParty.get("https://api.discogs.com/database/search?q=#{query}&token=#{ENV['DISCOG_TOKEN']}")
     data = JSON.parse(response.body)
     
     results = data['results']
     
     if results.any?
       result = results.first['title'].split(' - ')
-      result[0].downcase != artist_params.downcase ? artist = artist_params.capitalize : artist = result[0]
+      result[0].downcase.include?('tool') ? artist = 'Tool' : artist = result[0]
       title = result[1]
       
       format = results.first['format']
@@ -57,9 +56,9 @@ class ReleasesController < ApplicationController
         track_titles = tracklist.map {|track| track['title']}
       end
       
-      @release = Release.find_by(artist: artist, title: title)
+      @release = Release.find_by(title: title)
       if @release
-        redirect_to new_release_listing_path(@release)
+        redirect_to new_release_listing_path(@release) and return
       end  
     end
     
