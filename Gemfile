@@ -86,3 +86,5 @@ gem "rack-user_agent", "~> 0.5.3"
 gem "httparty", "~> 0.21.0"
 
 gem "discogs-wrapper", "~> 2.5"
+
+gem "omniauth-spotify", "~> 0.0.13"
