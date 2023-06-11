@@ -1,8 +1,9 @@
+
 <div class="loginbar">
   <% if user_signed_in? %>
     <button type="button" class="login-add-release"><%= link_to "Add a Listing", new_release_path %></button>
     <span>|</span>
-    <%= link_to "Hello #{current_user.first_name}!" , listings_path %>
+    <%= link_to "Hello #{current_user.full_name}!" , listings_path %>
   <% else %>
     <%= link_to "Add a Listing", new_user_session_path %>
     <span>|</span>

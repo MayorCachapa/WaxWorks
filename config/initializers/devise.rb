@@ -14,8 +14,13 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '6b26164d560f01bfde282cfb55eb1983ffa718342a39f64ca27e138d914f1bc453ee4e7714e883d21a7fcf80339015385eb6018fba6f1d4cff53921a564e4c4e'
+  # config.secret_key = '6b040df39f33d8779de62207b9782253a8c6971779df17840ac8e372ee181ff8e5d10fc239598008191196f6cee42e7aebeba220e969769a40cb5c4a4d621bcf'
 
+  config.omniauth :spotify, Rails.application.credentials.dig(:spotify_client_id), Rails.application.credentials.dig(:spotify_client_secret), scope: %w(
+    playlist-read-private
+    user-read-private
+    user-read-email
+  ).join(' ')
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -266,7 +271,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html, :turbo_stream]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  config.sign_out_via = :get
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

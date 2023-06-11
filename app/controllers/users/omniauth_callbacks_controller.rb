@@ -7,7 +7,19 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should also create an action method in this controller like this:
   # def twitter
   # end
+  def spotify
+    user = User.from_omniauth(auth)
 
+    if user.present?
+      sign_out_all_scopes
+      flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Spotify'
+      sign_in_and_redirect user, event: :authentication
+    else
+      flash[:alert] =
+        t 'devise.omniauth_callbacks.failure', kind: 'Spotify', reason: "#{auth.info.email} is not authorized"
+        redirect_to new_user_session_path
+    end
+  end
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
 
@@ -20,7 +32,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def failure
   #   super
   # end
+  private
 
+  def auth
+    @auth ||= request.env['omniauth.auth']
+  end
   # protected
 
   # The path used when OmniAuth fails

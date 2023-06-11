@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+
+  def after_sing_out_path_for(_resource_or_scope)
+    new_user_session_path
+  end
+
+  
+  def after_sing_in_path_for(_resource_or_scope)
+    stored_location_for(resource_or_scope) || root_path
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -14,9 +23,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # protected
 

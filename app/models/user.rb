@@ -12,7 +12,16 @@ class User < ApplicationRecord
   serialize :user_top_spotify_items, JSON
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-  validates :location, :first_name, :last_name, presence: true
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:spotify]
+  
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.full_name = auth.info.name
+      user.avatar_url = auth.info.image
+    end
+  end
+  validates :full_name, presence: true
 end
