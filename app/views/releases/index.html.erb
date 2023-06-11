@@ -14,22 +14,22 @@
 
 <div class="all-releases">
   <div class="releases">
-  <% for release in @releases %>
-    <div class="release-card">
-      <div class="album-thumbnail">
-        <%= link_to url_for(release) do %>
-          <%= image_tag release.url %>
-        <% end %>
-      </div>
-      <div class="album-content">
-        <div class="top">
-          <div class="album-copy">
-            <h4><%= release.title %></h4>
-            <p><%= release.artist%></p>
+    <% for release in @releases %>
+      <div class="release-card">
+        <div class="album-thumbnail">
+          <%= link_to url_for(release) do %>
+            <%= image_tag release.url %>
+          <% end %>
+        </div>
+        <div class="album-content">
+          <div class="top">
+            <div class="album-copy">
+              <h4><%= release.title %></h4>
+              <p><%= release.artist%></p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
  </div>

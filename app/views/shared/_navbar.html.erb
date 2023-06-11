@@ -1,19 +1,19 @@
-<div class="loginbar d-flex flex-row-reverse">
-<% if user_signed_in? %>
-  <%= link_to "Hello #{current_user.full_name}!" , listings_path, class: "px-2 pt-1"%>
-    <h6 class="pt-2">|</h6>
-  <%= link_to "Add a Listing", new_release_path, class: "px-2 pt-1"%>
 
-<% else %>
-  <%= link_to "Sign Up", new_user_session_path, class: "px-2 pt-1"%>
-    <h6 class="pt-2">|</h6>
-  <%= link_to "Add a Listing", new_user_session_path, class: "px-2 pt-1"%>
-<% end %>
+<div class="loginbar">
+  <% if user_signed_in? %>
+    <button type="button" class="login-add-release"><%= link_to "Add a Listing", new_release_path %></button>
+    <span>|</span>
+    <%= link_to "Hello #{current_user.full_name}!" , listings_path %>
+  <% else %>
+    <%= link_to "Add a Listing", new_user_session_path %>
+    <span>|</span>
+    <%= link_to "Sign Up", new_user_session_path%>
+  <% end %>
 </div>
 
 
 
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-between">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid justify-content-between">
     <div class= "navbar-brand">
         <%= link_to root_path, class: "navbar-brand" do %>
@@ -34,23 +34,20 @@
       <% end %>
     </div>
 
-      <div class ="navbar-icons">
-
-        <div class= "search-icon">
-          <%= render 'shared/search' %>
-        </div>
-
-        <div class="heart-icon">
-          <%= link_to favorites_path, class: "navbar-brand" do %>
-            <i class="fa-regular fa-heart heart-icon fa-lg" style="padding-right: 15px"></i>
-          <% end %>
-        </div>
-
-        <div class= "cart-icon">
-          <%= link_to orders_path, class: "navbar-brand" do %>
-            <i class="fa-solid fa-cart-shopping"></i>
-          <% end %>
-        </div>
+    <div class ="navbar-icons">
+      <div class= "search-icon">
+        <%= render 'shared/search' %>
       </div>
+      <div class="heart-icon">
+        <%= link_to favorites_path, class: "navbar-brand" do %>
+          <i class="fa-regular fa-heart heart-icon fa-lg" style="padding-right: 15px"></i>
+        <% end %>
+      </div>
+      <div class= "cart-icon">
+        <%= link_to orders_path, class: "navbar-brand" do %>
+          <i class="fa-solid fa-cart-shopping"></i>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

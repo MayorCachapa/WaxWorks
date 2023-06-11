@@ -2,13 +2,13 @@
 
 <div class="card p-5 mb-3">
     <%= simple_form_for [@release, @listing] do |f| %>
-    <%=f.input "condition", as: :radio_buttons, collection: %w(Excellent Good Fair Damaged) %>
-    <%=f.input "sleeve_condition", as: :radio_buttons, collection: %w(Excellent Good Fair Damaged)%>
-    <%=f.input "price_cents"%>
+    <%=f.input "condition", label: "Album Condition", as: :radio_buttons, collection: %w(Excellent Good Fair Damaged) %>
+    <%=f.input "sleeve_condition", label: "Jacket/Sleeve Condition", as: :radio_buttons, collection: %w(Excellent Good Fair Damaged)%>
+    <%=f.input "price_cents", label: "Price $USD", placeholder: "$9.89"%>
     <%=f.input "shipping_fee"%>
     <%=f.input "comments"%>
-    <%=f.input "location"%>
-    <%= f.input :image, as: :file, label: "Wax Photo"%>
-    <%= f.submit class:'btn btn btn-secondary btn-lg btn-dar' %>
+    <%=f.input "location", label: "Shipping from location"%>
+    <%= f.input :image, as: :file, label: "Add a Photo"%>
+    <%= f.submit class:"btn btn-secondary btn-lg btn-dark mx-3" %>
     <% end %>
 </div>
