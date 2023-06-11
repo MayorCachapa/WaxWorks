@@ -1,0 +1,13 @@
+<div class="favorites">
+  <h1>My Favorites</h1>
+
+  <div class="user-favorites">
+    <%= for favorite in @favorites %>
+      <%= if current_user == favorite.user %>
+        <ul>
+          <li> <%= favorite.release.title %> </li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+</div>

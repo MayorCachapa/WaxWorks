@@ -32,7 +32,11 @@
           </div>
           <div class="heart-default" data-controller="favorites-icon">
             <div data-favorites-icon-target="color" data-action="click->favorites-icon#changeColor">
-              <i data-favorites-icon-target="icon" class="listing-heart fa-regular fa-heart fa-2x"></i>
+
+              <%# /////// Unable to link to favorites POST %>
+              <%# <%= button_to release_favorites_path(release_id: release.id), method: :post do %>
+                <i data-favorites-icon-target="icon" class="listing-heart fa-regular fa-heart fa-2x"></i>
+              <%# <% end %>
             </div>
           </div>
         </div>
