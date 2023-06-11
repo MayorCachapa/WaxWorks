@@ -83,7 +83,6 @@
   margin: auto;
   margin-bottom: 20px;
   background-color: white;
-
 }
 
 .listing-cards:hover {
@@ -117,11 +116,6 @@
   justify-content: space-between;
 }
 
-.fa-heart {
-  position: relative;
-  padding: 10px 20px 0 0;
-}
-
 .listing-album-copy {
   margin-left: 10px;
   margin-top: 10px;
@@ -137,6 +131,19 @@
   margin-bottom: 0;
   color: #A6A6A6;
   font-size: 16px;
+}
+
+.listing-heart {
+  position: relative;
+  padding: 10px 20px 0 0;
+}
+
+.listing-heart-red {
+  color: #d74040;
+}
+
+.listing-album-copy button {
+  margin-right: 16px;
 }
 
 .listing-bottom-content {
