@@ -2,7 +2,15 @@ require 'httparty'
 require 'dotenv/load'
 
 puts 'Seeding...'
-user = User.create(email:'test@gmail.com', password:'secret', location:'Caracas, Venezuela', first_name:'Alejandro', last_name:'Rodriguez Hernandez')
+user = User.create(
+  email:'test@gmail.com', 
+  password:'secret', 
+  location:'Caracas, Venezuela', 
+  full_name:'Alejandro Rodriguez Hernandez',
+  uid: '',
+  avatar_url: '',
+  provider: ''
+)
 # file = File.join(__dir__, 'json/tracks.json')
 # hash = JSON.parse(File.open(file).read)
 # user.save

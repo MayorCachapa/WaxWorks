@@ -1,6 +1,6 @@
 <div class="loginbar d-flex flex-row-reverse">
 <% if user_signed_in? %>
-  <%= link_to "Hello #{current_user.first_name}!" , listings_path, class: "px-2 pt-1"%>
+  <%= link_to "Hello #{current_user.full_name}!" , listings_path, class: "px-2 pt-1"%>
     <h6 class="pt-2">|</h6>
   <%= link_to "Add a Listing", new_release_path, class: "px-2 pt-1"%>
 
