@@ -32,7 +32,11 @@
           </div>
           <div class="heart-default" data-controller="favorites-icon">
             <div data-favorites-icon-target="color" data-action="click->favorites-icon#changeColor">
-              <i data-favorites-icon-target="icon" class="listing-heart fa-regular fa-heart fa-2x"></i>
+              <%= link_to '<i data-favorites-icon-target="icon" class="listing-heart fa-regular fa-heart fa-2x"></i>'.html_safe, release_favorites_path(release), data: {turbo_method: :post} %>
+
+
+
+
             </div>
           </div>
         </div>

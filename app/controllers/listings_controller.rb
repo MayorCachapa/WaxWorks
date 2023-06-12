@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
 
   def index
     @releases = Release.all
+    @favorites = Favorite.all
 
     @listings = Listing.all
     if params[:query].present?

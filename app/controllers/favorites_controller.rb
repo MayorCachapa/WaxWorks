@@ -2,19 +2,19 @@ class FavoritesController < ApplicationController
     def index
         @favorites = Favorite.all
     end
-    
+
     def create
         @favorite = Favorite.new
-        @favorites.user = current_user
-        @favorites.release = params[:release_id]
-    
+        @favorite.user = current_user
+        @favorite.release = Release.find(params[:release_id])
+
         if @favorite.save
-          redirect_to release_path(@favorite.release)
+          redirect_to favorites_path
         else
           render :index, status: :unprocessable_entity
         end
     end
-    
+
     def update
     end
 end
