@@ -1,5 +1,7 @@
 @import "components/filter";
 
+///////sort styling below//////
+
 .sort-bar {
   display: flex;
   align-items: center;
@@ -61,6 +63,8 @@
   display: block;
 }
 
+/////////index styling below//////////
+
 .filter-and-listings {
   display: flex;
   padding: 0 5px 0 5px;
@@ -68,7 +72,7 @@
 
 .listings {
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: start;
   padding-top: 20px;
   background: radial-gradient(circle at bottom left,transparent 25%,#000000 25.5%, #000000 36%, transparent 37%, transparent 100%),radial-gradient(circle at top right,transparent 34%,#000000 34.5%, #000000 45.5%, transparent 46%, transparent 100%);
@@ -80,9 +84,10 @@
 .listing-cards {
   height: 560px;
   width: 400px;
-  margin: auto;
   margin-bottom: 20px;
+  margin-inline: 8px;
   background-color: white;
+  border-radius: 10px;
 }
 
 .listing-cards:hover {
@@ -98,6 +103,7 @@
   height: 100%;
   position: relative;
   object-fit: cover;
+  border-radius: 10px 10px 0 0;
 }
 
 .listing-cards:hover img {
