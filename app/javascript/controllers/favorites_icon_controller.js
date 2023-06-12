@@ -4,7 +4,20 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["color", "icon"]
 
+  connect() {
+
+
+
+    const isFavorite = this.hasColorTarget && this.colorTarget.classList.contains("listing-heart-red")
+    if (isFavorite === "true") {
+      this.colorTarget.classList.add("listing-heart-red")
+
+    }
+  }
+
   changeColor() {
+
+
     this.colorTarget.classList.toggle("listing-heart-red")
 
     const currentClass = this.iconTarget.classList.contains("fa-solid") ? "fa-solid" : "fa-regular"
@@ -14,7 +27,4 @@ export default class extends Controller {
     this.iconTarget.classList.add(newClass)
   }
 
-  connect() {
-    console.log(this.colorTarget)
-  }
 }

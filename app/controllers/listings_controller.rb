@@ -4,6 +4,8 @@ class ListingsController < ApplicationController
   def index
     @releases = Release.all
     @favorites = Favorite.all
+    @favorite = Favorite.new
+
 
     @listings = Listing.all
     if params[:query].present?
