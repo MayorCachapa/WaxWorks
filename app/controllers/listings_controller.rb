@@ -38,7 +38,11 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+    @listing = Listing.find(params[:id])
+    @listing.destroy
+    redirect_to pages_path, status: :see_other, notice: 'Listing was successfully deleted.'
   end
+
 
   private
 
