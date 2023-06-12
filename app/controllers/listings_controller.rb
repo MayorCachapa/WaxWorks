@@ -32,9 +32,16 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    @listing = Listing.find(params[:id])
   end
 
   def update
+    @listing = Listing.find(params[:id])
+    if @listing.update(listing_params)
+      redirect_to pages_path, notice: 'Listing was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
