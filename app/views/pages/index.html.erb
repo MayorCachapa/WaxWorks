@@ -17,7 +17,8 @@
       <h5><strong>Condition: </strong><%= listing.condition %></h5>
       <h5><strong>Sleeve Condition: </strong><%= listing.sleeve_condition %></h5>
     </div>
-    <div class="listing-seller">
+    <div class="listing-button">
+    <%= link_to 'Edit Listing', edit_listing_path(listing) %>
 
     </div>
     <div class="listing-button">
