@@ -16,7 +16,7 @@
   <%# _filter partial is rendered %>
   <%= render "shared/filter" %>
 
-  <div class="listings align-content-start">
+  <div class="listings">
     <% for release in @releases %>
     <div class="listing-cards">
       <div class="listing-album-thumbnail">
@@ -30,15 +30,19 @@
             <h4><%= release.title %></h4>
             <p><%= release.artist%></p>
           </div>
-          <div class="heart-default" data-controller="favorites-icon">
-            <div data-favorites-icon-target="color" data-action="click->favorites-icon#changeColor">
 
-              <%# /////// Unable to link to favorites POST %>
-              <%# <%= button_to release_favorites_path(release_id: release.id), method: :post do %>
-                <i data-favorites-icon-target="icon" class="listing-heart fa-regular fa-heart fa-2x"></i>
-              <%# <% end %>
-            </div>
+          <div class="heart-default listing-heart">
+            <% if Favorite.find_by(user: current_user, release: release) %>
+              <%= link_to  favorite_path(release.id), data: {turbo_method: :delete } do %>
+                <button><i class="listing-heart fa-solid fa-heart fa-2x listing-heart-red"></i></button>
+              <% end %>
+            <% else %>
+              <%= link_to release_favorites_path(release.id), data: {turbo_method: :post } do %>
+                <button><i class="fa-regular fa-heart fa-2x"></i></button>
+              <% end %>
+            <% end %>
           </div>
+
         </div>
         <div class="listing-bottom-content">
           <div class="availability">

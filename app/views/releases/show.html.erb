@@ -20,16 +20,16 @@
           <td>Released date:</td>
           <td><%= @release.date %></td>
         </tr>
-      </table>
-      <br>
-      <h5><strong>Description</strong></h5>
-      <div class="notes">
-        <% if @release.description.include?('https') %>
-          <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
-        <% else %>
-          <%= @release.description %>
-        <% end %>
-      </div>
+        </table>
+        <br>
+        <h5><strong>Description</strong></h5>
+        <div class="notes">
+          <% if @release.description.include?('https') %>
+            <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
+          <% else %>
+            <%= @release.description %>
+          <% end %>
+        </div>
       <br>
 
 <%# //////// Collapsible - to be implemented //////
@@ -95,7 +95,7 @@
       <h5><strong>Sleeve Condition: </strong><%= listing.sleeve_condition %></h5>
     </div>
     <div class="listing-seller">
-      <h5><strong>Seller: </strong><%= listing.user.first_name.capitalize %> <%= listing.user.last_name %></h5>
+      <h5><strong>Seller: </strong><%= listing.user.full_name.capitalize %></h5>
     </div>
     <div class="listing-button">
       <i class="fa-solid fa-cart-shopping fa-2xl p-3 mt-5" style="color: #000000;"></i>

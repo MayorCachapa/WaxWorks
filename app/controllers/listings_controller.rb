@@ -3,6 +3,10 @@ class ListingsController < ApplicationController
 
   def index
     @releases = Release.all
+    @favorites = Favorite.all
+    @favorite = Favorite.new
+    @users_favorites = Favorite.where(user: current_user)
+
 
     @listings = Listing.all
     if params[:query].present?
@@ -32,13 +36,24 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    @listing = Listing.find(params[:id])
   end
 
   def update
+    @listing = Listing.find(params[:id])
+    if @listing.update(listing_params)
+      redirect_to pages_path, notice: 'Listing was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @listing = Listing.find(params[:id])
+    @listing.destroy
+    redirect_to pages_path, status: :see_other, notice: 'Listing was successfully deleted.'
   end
+
 
   private
 

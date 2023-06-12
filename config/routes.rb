@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { 
+  devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions', 
+    sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   root to: "pages#home"
@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :pages, only: [ :index ]
+
   resources :releases, only: [:new, :create, :show, :index] do
     resources :listings, only: [ :new, :create ]
     resources :favorites, :reviews, only: [ :new, :create ]
@@ -28,6 +30,6 @@ Rails.application.routes.draw do
 
   resources :orders, only: [ :show, :create, :index, :edit ]
 
-  resources :favorites, only: [ :index, :update ]
+  resources :favorites, only: [ :index, :update, :destroy ]
 
 end

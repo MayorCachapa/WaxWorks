@@ -90,18 +90,39 @@
   height: 36px ;
   color: white;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1px;
+
+}
+
+.loginbar2{
+  position: fixed;
+  background-color: #394867;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  height: 36px ;
+  color: white;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   padding-right: 1px;
 }
 
-.loginbar a, span {
-  padding-right: 50px;
+.signout {
+  justify-content: left;
+  margin-left: 46px;
 }
+
+.loginbar span {
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
 
 .login-add-release {
   background-color: #EAF152;
-  margin-right: 50px;
   border-radius: 4px;
 }
 
@@ -109,4 +130,9 @@
   color: black;
   font-weight: 700;
   padding-inline: 14px;
+}
+
+.lb-right-content{
+  position: relative;
+  right: -12px;
 }
