@@ -1,9 +1,11 @@
-<h1>Favorites</h1>
+<div class="favorites-index">
+  <h1>Favorites</h1>
 
-<ul class="list-group">
-  <% for favorite in @favorites %>
-    <% if current_user == favorite.user %>
-      <li><%= favorite.release.title %></li>
+  <ul class="list-group">
+    <% for favorite in @favorites %>
+      <% if current_user == favorite.user %>
+        <li><%= favorite.release.title %></li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+</div>
