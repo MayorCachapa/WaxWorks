@@ -30,13 +30,36 @@
             <h4><%= release.title %></h4>
             <p><%= release.artist%></p>
           </div>
-          <div class="heart-default" data-controller="favorites-icon">
-            <div data-favorites-icon-target="color" data-action="click->favorites-icon#changeColor">
-              <%= simple_form_for [release, @favorite] do |f| %>
-                <button type="submit" class=""><i data-favorites-icon-target="icon" class="listing-heart fa-regular fa-heart fa-2x"></i></button>
+          <div class="heart-default listing-heart">
+            <% if Favorite.find_by(user: current_user, release: release) %>
+              <%= link_to  favorite_path(release.id), data: {turbo_method: :delete } do %>
+                <button><i class="listing-heart fa-solid fa-heart fa-2x listing-heart-red"></i></button>
               <% end %>
-            </div>
+            <% else %>
+              <%= link_to release_favorites_path(release.id), data: {turbo_method: :post } do %>
+                <button><i class="fa-regular fa-heart fa-2x"></i></button>
+              <% end %>
+            <% end %>
           </div>
+
+          <%# /////////JS Code///////// %>
+          <%# <div class="heart-default" data-controller="favorites-icon">
+            <div data-favorites-icon-target="color">
+              <% if Favorite.find_by(user: current_user, release: release) %>
+                <%# <%= simple_form_for [release, @favorite] do |f| %>
+                  <%# <button type="submit" class=""> %>
+                    <%# <i data-favorites-icon-target="icon" data-action="click->favorites-icon#changeColor" class="listing-heart fa-solid fa-heart fa-2x listing-heart-red"></i> %>
+                  <%# </button> %>
+                <%# <% end %>
+              <%# <% else %>
+                <%# <%= link_to release_favorite_path(release), method: :delete, data: { confirm: 'Are you sure you want to delete this?', turbo_method: :delete } do %>
+                  <%# <i data-favorites-icon-target="icon" data-action="click->favorites-icon#changeToDefaultColor" class="listing-heart fa-regular fa-heart fa-2x"></i> %>
+                <%# <% end %>
+              <%# <% end %>
+            <%# </div> %>
+          <%# </div> %>
+          <%# /////////JS Code///////// %>
+
         </div>
         <div class="listing-bottom-content">
           <div class="availability">

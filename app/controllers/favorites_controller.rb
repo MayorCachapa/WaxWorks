@@ -1,7 +1,6 @@
 class FavoritesController < ApplicationController
     def index
         @favorites = Favorite.all
-
     end
 
     def create
@@ -19,6 +18,12 @@ class FavoritesController < ApplicationController
     end
 
     def update
+    end
+
+    def destroy
+      @favorite = Favorite.find(params[:id])
+      @favorite.destroy
+      redirect_to listings_path
     end
 
     private

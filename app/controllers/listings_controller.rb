@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
     @releases = Release.all
     @favorites = Favorite.all
     @favorite = Favorite.new
+    @users_favorites = Favorite.where(user: current_user)
 
 
     @listings = Listing.all
