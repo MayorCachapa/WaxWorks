@@ -5,8 +5,8 @@ class FavoritesController < ApplicationController
 
     def create
         @favorite = Favorite.new
-        @favorite.user = current_user
-        @favorite.release = Release.find(params[:release_id])
+        @favorites.user = current_user
+        @favorites.release = Release.find(params[:release_id])
 
         if favorite_already_exists?
           redirect_to listings_path, notice: "Release already in favorites."
