@@ -4,6 +4,10 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["color", "icon"]
 
+  connect() {
+
+  }
+
   changeColor() {
     this.colorTarget.classList.toggle("listing-heart-red")
 
@@ -14,7 +18,16 @@ export default class extends Controller {
     this.iconTarget.classList.add(newClass)
   }
 
-  connect() {
-    console.log(this.colorTarget)
+  changeToDefaultColor(event){
+    event.preventDefault();
+    this.colorTarget.classList.remove("listing-heart-red")
+
+    const currentClass = this.iconTarget.classList.contains("fa-regular") ? "fa-regular" : "fa-solid"
+    const newClass = currentClass === "fa-regular" ? "fa-solit" : "fa-regular"
+
+    this.iconTarget.classList.remove(currentClass)
+    this.iconTarget.classList.add(newClass)
+    this.element.querySelector("form").submit();
   }
+
 }

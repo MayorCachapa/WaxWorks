@@ -30,6 +30,6 @@ Rails.application.routes.draw do
 
   resources :orders, only: [ :show, :create, :index, :edit ]
 
-  resources :favorites, only: [ :index, :update ]
+  resources :favorites, only: [ :index, :update, :destroy ]
 
 end
