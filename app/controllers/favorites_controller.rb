@@ -11,7 +11,10 @@ class FavoritesController < ApplicationController
         if favorite_already_exists?
           redirect_to favorites_path, notice: "Release already in favorites."
         elsif @favorite.save
-          redirect_to favorites_path, notice: "Release added to favorites list"
+          if request.referer.include?('release')
+            redirect_to release_path(@favorite.release), notice: "Release added to favorites list" and return
+          end
+          redirect_to listings_path
         else
           redirect_to favorites_path, status: :unprocessable_entity
         end
@@ -22,8 +25,13 @@ class FavoritesController < ApplicationController
 
     def destroy
       @favorite = Favorite.find(params[:id])
-      @favorite.destroy
-      redirect_to listings_path
+      @release = @favorite.release
+      @favorite.destroy!
+      if request.referer.include?('release')
+        redirect_to release_path(@release)
+      else
+        redirect_to listings_path
+      end
     end
 
     private
