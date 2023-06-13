@@ -26,12 +26,22 @@ class ReleasesController < ApplicationController
     response = HTTParty.get("https://api.discogs.com/database/search?q=#{query}&token=#{ENV['DISCOG_TOKEN']}")
     data = JSON.parse(response.body)
 
+    current_user.fetch_token
+    access_token = current_user.spotify_token
+    response_search = HTTParty.get("https://api.spotify.com/v1/search?q=#{query}&type=album", headers: {
+      'Authorization' => "Bearer #{access_token}"
+    })
+    
+    albums = response_search['albums']['items']
+    artists = response_search['albums']['items'].first['artists']
+    
     results = data['results']
 
     if results.any?
-      result = results.first['title'].split(' - ')
-      result[0].downcase.include?('tool') ? artist = 'Tool' : artist = result[0]
-      title = result[1]
+      # result = results.first['title'].split(' - ')
+      # result[0].downcase.include?('tool') ? artist = 'Tool' : artist = result[0]
+      title = albums.first['name']
+      artist = artists.first['name']
 
       format = results.first['format']
       format = format.nil? ? 'Unknown' : format.join(', ')

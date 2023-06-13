@@ -69,7 +69,7 @@
   <div class="releases">
     <% for album in @user.saved_albums %>
       <% @listings.each do |listing| %>
-        <% if listing.release.title.include?(album) %>
+        <% if album.include?(listing.release.title) %>
         <div class="release-card">
           <div class="album-thumbnail">
             <%= link_to url_for(listing.release) do %>
