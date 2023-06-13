@@ -200,3 +200,9 @@
   padding-right: 20px;
   text-align: end;
 }
+
+
+.vertical-listings {
+  display: flex;
+  flex-direction: column;
+}

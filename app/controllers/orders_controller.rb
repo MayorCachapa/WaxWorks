@@ -62,6 +62,9 @@ class OrdersController < ApplicationController
     end
 
     def destroy
+      @order = Order.find(params[:id])
+      @order.destroy
+      redirect_to orders_path, status: :see_other, notice: 'Order was successfully deleted.'
     end
 
     private
