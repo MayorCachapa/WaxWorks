@@ -63,6 +63,7 @@ class User < ApplicationRecord
       'Authorization' => "Bearer #{access_token}"
     })
     
+    self.top_artists = []
     if response_artists.code == 200
       results = response_artists['items']
       for item in results
@@ -72,6 +73,7 @@ class User < ApplicationRecord
       self.top_artists = nil
     end
 
+    self.top_albums = []
     if response_tracks.code == 200
       results = response_tracks['items']
       for item in results
@@ -81,6 +83,8 @@ class User < ApplicationRecord
       self.top_albums = nil
     end
 
+    
+    self.saved_albums = []
     if response_albums.code == 200
       results = response_albums['items']
       for item in results
