@@ -8,61 +8,64 @@
   </div>
   <div class="release-information">
     <div class="release-information-content">
-      <h3><strong><%= @release.title %></strong></h3>
-      <h5><strong><%= @release.artist %></strong></h5>
-      <br>
-      <table>
-        <tr>
-          <td>Format:</td>
-          <td><%= @release.format %></td>
-        </tr>
-        <tr>
-          <td>Released date:</td>
-          <td><%= @release.date %></td>
-        </tr>
-        </table>
-        <br>
-        <h5><strong>Description</strong></h5>
-        <div class="notes">
-          <% if @release.description.include?('https') %>
-            <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
-          <% else %>
-            <%= @release.description %>
-          <% end %>
+      <div class="release-primary-info d-flex justify-content-between border-bottom mb-2">
+        <div class="release-primary-info-left">
+          <h3><strong><%= @release.title %></strong></h3>
+          <h5><strong><%= @release.artist %></strong></h5>
         </div>
-      <br>
-
-<%# //////// Collapsible - to be implemented //////
-      <div class="accordion" id="accordionExample">
-        <div class="card">
-         <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Collapsible Group Item #1
-              </button>
-            </h5>
-          </div>
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
+        <div class="div release-primary-info-right">
+          <button type="button" class="btn btn-lg btn-primary"><%= link_to "Add a Listing for this Release", new_release_listing_path(@release.id) %></button>
         </div>
       </div>
-///////////////////////////////////////////////// %>
+      <div class="release-secondary-info">
+        <div class="release-secondary-info-row1 pb-2 mb-2 border-bottom">
+          <div class="release-format"><strong>Format:</strong>  <%= @release.format %></div>
+          <div class="release-date"><strong>Release Date:</strong> <%= @release.date %></div>
+          <div class="release-listing-count"><strong>Listings:</strong> <%= @release.listings.count %></div>
+          <div class="release-avg-price"><strong>Market Value:</strong> $10</div>
+        </div>
+        <div class="release-secondary-info-row2">
+          <div class="accordion" id="accordionExample">
 
-      <h5><strong>Track Listing</strong></h5>
-      <div class="track-listing">
-        <ol>
-          <% @release.tracklist.each do |track| %>
+            <div class="accordion-item release-description">
+              <h2 class="accordion-header">
+                <button class="accordion-button py-2 px-2 bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Album Description
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <% if @release.description.include?('https') %>
+                    <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
+                  <% else %>
+                    <%= @release.description %>
+                  <% end %>
+                </div>
+                </div>
+              </div>
+            </div>
 
-              <li><%= track %></li>
+            <div class="accordion-item release-tracks">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed py-2 px-2 bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Track Listing
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body track-listing">
+                  <ol>
+                    <% @release.tracklist.each do |track| %>
+                        <li><%= track %></li>
+                    <% end %>
+                  </ol>
+                </div>
+              </div>
+            </div>
 
-          <% end %>
-        </ol>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 </div>
 
