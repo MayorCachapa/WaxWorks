@@ -3,10 +3,14 @@
   align-items: center;
   padding: 30px;
   height: 660px;
-  margin-top: 66px;
+  margin-top: 102px;
   z-index: 1020;
   width: 100%;
-  background-color: white;
+
+  background: radial-gradient(circle at bottom left,transparent 25%,#000000 25.5%, #000000 36%, transparent 37%, transparent 100%),radial-gradient(circle at top right,transparent 34%,#000000 34.5%, #000000 45.5%, transparent 46%, transparent 100%);
+  background-size: 1em 1em;
+  background-color: #ffffff;
+  opacity: 1
 }
 
 .release-image {
@@ -17,17 +21,15 @@
   height: 600px;
   width: 600px;
   object-fit: cover;
+  padding: 0px;
+  border-radius: 20px 0 0 20px;
 }
 
 .release-information {
   height: 600px;
   width: 100%;
   background-color: #ffffff;
-
-  background: radial-gradient(circle at bottom left,transparent 25%,#000000 25.5%, #000000 36%, transparent 37%, transparent 100%),radial-gradient(circle at top right,transparent 34%,#000000 34.5%, #000000 45.5%, transparent 46%, transparent 100%);
-        background-size: 1em 1em;
-        background-color: #ffffff;
-        opacity: 1
+  border-radius: 0 20px 20px 0;
 }
 
 .release-information-content {
@@ -68,7 +70,7 @@
   width: auto;
   margin: 30px;
   border: solid;
-  border-radius: 0% 100px 100px 0%;
+  border-radius: 10px 100px 100px 10px;
 }
 
 .listing-image {
@@ -79,11 +81,18 @@
   height: 100%;
   width: auto;
   object-fit: contain;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .listing-album  {
   margin: 10px;
   width: 285px;
+}
+
+.listing-price {
+  background-color: $yellow;
+  border-radius: 6px;
 }
 
 .listing-details {
