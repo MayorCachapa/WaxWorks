@@ -1,25 +1,25 @@
 
 <div class="loginbar">
   <% if user_signed_in? %>
-  <div class= "signout">
-      <%= link_to "Hello #{current_user.full_name}!" , pages_path%>
-      <span>|</span>
-      <%= link_to "Sign Out" , destroy_user_session_path %>
-  </div>
+    <div class= "signout">
+        <%= link_to "Hello #{current_user.full_name}!" , pages_path%>
+        <span>|</span>
+        <%= link_to "Sign Out" , destroy_user_session_path %>
+    </div>
     <div class = "lb-right-content p-5 justify-content-right">
       <button type="button" class="login-add-release"><%= link_to "Add a Listing", new_release_path %></button>
     <div>
-</div>
-  <% else %>
-<div class="loginbar2">
-  <div class= "signout">
-      <%= link_to "Sign Up", new_user_session_path%>
     </div>
-  <div class = "lb-right-content p-5 justify-content-right">
-    <button type="button" class="login-add-release"><%= link_to "Add a Listing", new_release_path %></button>
-  </div>
-  <% end %>
-</div>
+      <% else %>
+        <div class="loginbar2">
+          <div class= "signout">
+            <%= link_to "Sign Up", new_user_session_path%>
+          </div>
+          <div class = "lb-right-content p-5 justify-content-right">
+            <button type="button" class="login-add-release"><%= link_to "Add a Listing", new_release_path %></button>
+          </div>
+      <% end %>
+    </div>
 </div>
 
 
