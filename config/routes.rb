@@ -13,11 +13,12 @@ Rails.application.routes.draw do
 
   resources :releases, only: [:new, :create, :show, :index] do
     resources :listings, only: [ :new, :create ]
-    resources :favorites, :reviews, only: [ :new, :create ]
+    resources :favorites, :reviews, only: [ :new, :create, :destroy ]
   end
 
   resources :listings do
     resources :orders, only: [ :new, :create ]
+    resources :favorites, :reviews, only: [ :new, :create, :destroy ]
   end
 
   resources :orders, only: [:show, :create, :index, :edit, :destroy ] do

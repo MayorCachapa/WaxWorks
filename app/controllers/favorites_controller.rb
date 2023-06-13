@@ -22,7 +22,7 @@ class FavoritesController < ApplicationController
 
     def destroy
       @favorite = Favorite.find(params[:id])
-      @favorite.destroy
+      @favorite.destroy!
       redirect_to listings_path
     end
 

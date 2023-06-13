@@ -32,8 +32,9 @@
           </div>
 
           <div class="heart-default listing-heart">
-            <% if Favorite.find_by(user: current_user, release: release) %>
-              <%= link_to  favorite_path(release.id), data: {turbo_method: :delete } do %>
+            <% favorite = Favorite.find_by(user: current_user, release: release) %>
+            <% if favorite %>
+              <%= link_to  favorite_path(favorite), data: {turbo_method: :delete } do %>
                 <button><i class="listing-heart fa-solid fa-heart fa-2x listing-heart-red"></i></button>
               <% end %>
             <% else %>
