@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :update, :destroy]
 
+
   def index
     @releases = Release.all
     @favorites = Favorite.all
@@ -65,6 +66,7 @@ class ListingsController < ApplicationController
     @listing.destroy
     redirect_to pages_path, status: :see_other, notice: 'Listing was successfully deleted.'
   end
+
 
 
   private
