@@ -2,7 +2,7 @@
 <div class="loginbar">
   <% if user_signed_in? %>
     <div class= "signout">
-        <%= link_to "Hello #{current_user.full_name}!" , pages_path%>
+        <%= link_to "Hello #{current_user.full_name.split.first}!" , pages_path%>
         <span>|</span>
         <%= link_to "Sign Out" , destroy_user_session_path %>
     </div>

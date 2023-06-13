@@ -9,11 +9,11 @@ class FavoritesController < ApplicationController
         @favorite.release = Release.find(params[:release_id])
 
         if favorite_already_exists?
-          redirect_to listings_path, notice: "Release already in favorites."
+          redirect_to favorites_path, notice: "Release already in favorites."
         elsif @favorite.save
-          redirect_to listings_path, notice: "Release added to favorites list"
+          redirect_to favorites_path, notice: "Release added to favorites list"
         else
-          render :index, status: :unprocessable_entity
+          redirect_to favorites_path, status: :unprocessable_entity
         end
     end
 
