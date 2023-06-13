@@ -1,0 +1,89 @@
+.orders-container {
+  max-width: 1390px;
+  padding: 40px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-color: white;
+  position: relative;
+  top: 50px;
+}
+
+.order-items-summary {
+  display: flex;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-card {
+  display: flex;
+  width: 800px;
+  background-color: white;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: solid;
+  border-color: $light-gray;
+}
+
+.order-details {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.order-image img {
+  height: auto;
+  width: 200px;
+  margin: auto;
+}
+
+.delete-button {
+  margin-top: auto;
+  background-color: black;
+}
+
+.order-price {
+  padding: 15px;
+  margin-left: auto;
+}
+
+.order-summary {
+  width: 350px;
+  padding: 15px;
+  background-color: white;
+}
+
+.summary-title {
+  margin-bottom: 30px;
+}
+
+.order-subtotal {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.order-shipping {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid;
+  border-color: $light-gray;
+  padding-bottom: 10px;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid;
+  border-color: $light-gray;
+  padding-block: 10px;
+}
+
+.order-summary button {
+  width: 90%;
+  margin-top: 15px;
+  margin-left: 15px;
+}
