@@ -1,5 +1,13 @@
 <div class="filter">
     <div class="location-filter"><h5>Location</h5></div>
     <div class="price-filter"><h5>Price</h5></div>
+             <%= form_with url: listings_path, method: :get, html: {class: "mb-4"} do |f| %>
+          <%= f.label :query, "Max Price" %>
+          <%= f.text_field :max,
+                           class: "form-control",
+                           value: params[:max]
+                           %>
+        <% end %>
+
     <div class="contition-filter"><h5>Condition</h5></div>
   </div>

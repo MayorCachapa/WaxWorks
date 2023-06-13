@@ -13,6 +13,10 @@ class ListingsController < ApplicationController
       sql = 'title ILIKE :query or artist ILIKE :query'
       @releases = @releases.where(sql, query: "%#{params[:query]}%")
     end
+
+    if params[:max].present?
+      @releases = @releases.joins(:listings).where("price_cents <= ?", params[:max]).distinct
+    end
   end
 
   def new
