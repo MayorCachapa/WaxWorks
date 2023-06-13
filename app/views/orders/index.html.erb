@@ -7,23 +7,34 @@
 <br>
 
 
+<h1>My Orders</h1>
 
-
-
-<% @orders.each do |order| %>
-<%= order.listing.release.title %>
-
-
-<div class="container">
-  <div class="row py-4">
-    <div class="col">
-      <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= order.listing.release.title %></strong> for <strong><%= humanized_money_with_symbol order%></strong></p>
+    <div class="vertical-listings">
+  <% @orders.each do |order| %>
+    <div class="avilable-listings">
+      <div class="listing-card">
+        <div class="listing-image">
+          <%= image_tag order.listing.release.url %>
+        </div>
+        <div class="listing-album">
+          <h3><strong><%= order.listing.release.title %></strong></h3>
+          <h5><strong><%= order.listing.release.artist %></strong></h5>
+        </div>
+        <div class="listing-details">
+          <h5><strong>Condition: </strong><%= order.listing.condition %></h5>
+          <h5><strong>Sleeve Condition: </strong><%= order.listing.sleeve_condition %></h5>
+        </div>
+        <div class="listing-seller">
+          <h5><strong>Seller: </strong><%= order.listing.user.full_name.split.first.capitalize %></h5>
+        </div>
+        <div class="listing-button">
+          <%= link_to "Delete", order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this?' }%>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
-<% end %>
+
 
  <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
