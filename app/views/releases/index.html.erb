@@ -1,20 +1,12 @@
-<div class="sort-bar">
+<div class="first-bar title-bar">
   <div>
-    <h4><strong>All Available Releases (100)</strong></h4>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Sort By:</button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
+    <h4><strong>Top Tracks (5)</strong></h4>
   </div>
 </div>
-
 <div class="all-releases">
   <div class="releases">
-    <% for release in @releases %>
+    <% @releases.each_with_index do |release, index| %>
+      <% break if index >= 5 %>
       <div class="release-card">
         <div class="album-thumbnail">
           <%= link_to url_for(release) do %>
@@ -25,7 +17,63 @@
           <div class="top">
             <div class="album-copy">
               <h4><%= release.title %></h4>
-              <p><%= release.artist%></p>
+              <p><%= release.artist %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+ </div>
+
+ <div class="title-bar">
+  <div>
+    <h4><strong>Top Artists (5)</strong></h4>
+  </div>
+</div>
+<div class="all-releases">
+  <div class="releases">
+    <% @releases.each_with_index do |release, index| %>
+      <% break if index >= 5 %>
+      <div class="release-card">
+        <div class="album-thumbnail">
+          <%= link_to url_for(release) do %>
+            <%= image_tag release.url %>
+          <% end %>
+        </div>
+        <div class="album-content">
+          <div class="top">
+            <div class="album-copy">
+              <h4><%= release.title %></h4>
+              <p><%= release.artist %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+ </div>
+
+  <div class="title-bar">
+  <div>
+    <h4><strong>Top Albums (5)</strong></h4>
+  </div>
+</div>
+<div class="all-releases">
+  <div class="releases">
+    <% @releases.each_with_index do |release, index| %>
+      <% break if index >= 5 %>
+      <div class="release-card">
+        <div class="album-thumbnail">
+          <%= link_to url_for(release) do %>
+            <%= image_tag release.url %>
+          <% end %>
+        </div>
+        <div class="album-content">
+          <div class="top">
+            <div class="album-copy">
+              <h4><%= release.title %></h4>
+              <p><%= release.artist %></p>
             </div>
           </div>
         </div>
