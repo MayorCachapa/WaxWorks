@@ -13,8 +13,21 @@
           <h3><strong><%= @release.title %></strong></h3>
           <h5><strong><%= @release.artist %></strong></h5>
         </div>
-        <div class="div release-primary-info-right">
-          <button type="button" class="btn btn-lg btn-primary"><%= link_to "Add a Listing for this Release", new_release_listing_path(@release.id) %></button>
+        <div class="div release-primary-info-right d-flex align-items-center">
+          <div class="heart-default px-2">
+            <% if Favorite.find_by(user: current_user, release: @release) %>
+              <%= link_to  favorite_path(@release.id), data: {turbo_method: :delete } do %>
+                <button><i class="fa-solid fa-heart fa-2x listing-heart-red"></i></button>
+              <% end %>
+            <% else %>
+              <%= link_to release_favorites_path(@release.id), data: {turbo_method: :post } do %>
+                <button><i class="fa-regular fa-heart fa-2x"></i></button>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="release-add-listing-button">
+            <button type="button" class="btn btn-primary py-2"><%= link_to "Add a Listing for this Release", new_release_listing_path(@release.id) %></button>
+          </div>
         </div>
       </div>
       <div class="release-secondary-info">
@@ -38,7 +51,7 @@
                   <% if @release.description.include?('https') %>
                     <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
                   <% else %>
-                    <%= @release.description %>
+                    <%= @release.description[0..250] ... %>
                   <% end %>
                 </div>
                 </div>
@@ -47,7 +60,7 @@
 
             <div class="accordion-item release-tracks">
               <h2 class="accordion-header">
-                <button class="accordion-button collapsed py-2 px-2 bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <button class="accordion-button collapsed py-2 px-2 bg-info border" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                   Track Listing
                 </button>
               </h2>
@@ -98,7 +111,7 @@
       <h5><strong>Sleeve Condition: </strong><%= listing.sleeve_condition %></h5>
     </div>
     <div class="listing-seller">
-      <h5><strong>Seller: </strong><%= listing.user.full_name.capitalize %></h5>
+      <h5><strong>Seller: </strong><%= listing.user.full_name.split.first.capitalize %></h5>
     </div>
     <div class="listing-button">
       <i class="fa-solid fa-cart-shopping fa-2xl p-3 mt-5" style="color: #000000;"></i>

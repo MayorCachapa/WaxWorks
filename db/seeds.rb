@@ -3,9 +3,9 @@ require 'dotenv/load'
 
 puts 'Seeding...'
 user = User.create(
-  email:'test@gmail.com', 
-  password:'secret', 
-  location:'Caracas, Venezuela', 
+  email:'test@gmail.com',
+  password:'secret',
+  location:'Caracas, Venezuela',
   full_name:'Alejandro Rodriguez Hernandez',
   uid: '',
   avatar_url: '',
@@ -15,7 +15,7 @@ user = User.create(
 # hash = JSON.parse(File.open(file).read)
 # user.save
 
-albums = ['And Justice for All', 'Nevermind', 'Peace Sells', 'Crack the Skye', 'New Levels New Devils']
+albums = ['And Justice for All', 'Nevermind', 'Peace Sells', 'Crack the Skye', 'New Levels New Devils', 'Five Easy Hot Dogs', 'Bossanova', 'Hammer of witches']
 
 albums.each do |album|
   response = HTTParty.get("https://api.discogs.com/database/search?q=#{album}&token=#{ENV['DISCOG_TOKEN']}")
@@ -26,7 +26,7 @@ albums.each do |album|
   if results.any?
     result = results.first['title'].split(' - ')
     format = results.first['format']
-    
+
     master_id = results.first['master_id']
 
     response_masters = HTTParty.get("https://api.discogs.com/masters/#{master_id}")
@@ -55,17 +55,17 @@ albums.each do |album|
     url = results.first['cover_image']
     artist = result[0].strip
     release_record = result[1].strip
-    
+
     release = Release.create(
-      artist: artist, 
-      title: release_record, 
-      url: url, 
-      format: format, 
-      tracklist: track_titles, 
+      artist: artist,
+      title: release_record,
+      url: url,
+      format: format,
+      tracklist: track_titles,
       description: description,
       date: date
     )
-    
+
     if release.nil?
       puts "Error with Release"
     end
