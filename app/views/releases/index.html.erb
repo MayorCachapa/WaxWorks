@@ -5,23 +5,26 @@
 </div>
 <div class="all-releases">
   <div class="releases">
-    <% @releases.each_with_index do |release, index| %>
-      <% break if index >= 5 %>
-      <div class="release-card">
-        <div class="album-thumbnail">
-          <%= link_to url_for(release) do %>
-            <%= image_tag release.url %>
-          <% end %>
-        </div>
-        <div class="album-content">
-          <div class="top">
-            <div class="album-copy">
-              <h4><%= release.title %></h4>
-              <p><%= release.artist %></p>
+    <% for artist in @user.top_artists %>
+      <% @listings.each do |listing| %>
+        <% if listing.release.artist == artist %>
+        <div class="release-card">
+          <div class="album-thumbnail">
+            <%= link_to url_for(listing.release) do %>
+              <%= image_tag listing.release.url %>
+            <% end %>
+          </div>
+          <div class="album-content">
+            <div class="top">
+              <div class="album-copy">
+                <h4><%= listing.release.title %></h4>
+                <p><%= listing.release.artist %></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
  </div>
@@ -33,23 +36,26 @@
 </div>
 <div class="all-releases">
   <div class="releases">
-    <% @releases.each_with_index do |release, index| %>
-      <% break if index >= 5 %>
-      <div class="release-card">
-        <div class="album-thumbnail">
-          <%= link_to url_for(release) do %>
-            <%= image_tag release.url %>
-          <% end %>
-        </div>
-        <div class="album-content">
-          <div class="top">
-            <div class="album-copy">
-              <h4><%= release.title %></h4>
-              <p><%= release.artist %></p>
+    <% for album in @user.top_albums %>
+      <% @listings.each do |listing| %>
+        <% if listing.release.title.include?(album) %>
+        <div class="release-card">
+          <div class="album-thumbnail">
+            <%= link_to url_for(listing.release) do %>
+              <%= image_tag listing.release.url %>
+            <% end %>
+          </div>
+          <div class="album-content">
+            <div class="top">
+              <div class="album-copy">
+                <h4><%= listing.release.title %></h4>
+                <p><%= listing.release.artist %></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
  </div>
@@ -61,23 +67,26 @@
 </div>
 <div class="all-releases">
   <div class="releases">
-    <% @releases.each_with_index do |release, index| %>
-      <% break if index >= 5 %>
-      <div class="release-card">
-        <div class="album-thumbnail">
-          <%= link_to url_for(release) do %>
-            <%= image_tag release.url %>
-          <% end %>
-        </div>
-        <div class="album-content">
-          <div class="top">
-            <div class="album-copy">
-              <h4><%= release.title %></h4>
-              <p><%= release.artist %></p>
+    <% for album in @user.saved_albums %>
+      <% @listings.each do |listing| %>
+        <% if listing.release.title.include?(album) %>
+        <div class="release-card">
+          <div class="album-thumbnail">
+            <%= link_to url_for(listing.release) do %>
+              <%= image_tag listing.release.url %>
+            <% end %>
+          </div>
+          <div class="album-content">
+            <div class="top">
+              <div class="album-copy">
+                <h4><%= listing.release.title %></h4>
+                <p><%= listing.release.artist %></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
  </div>
