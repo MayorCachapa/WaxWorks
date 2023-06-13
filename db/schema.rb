@@ -108,7 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_090507) do
     t.string "spotify_token"
     t.string "spotify_refresh_token"
     t.string "spotify_token_expires_at"
-    t.string "lastest_strip_session_id"
+    t.string "lastest_stripe_session_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

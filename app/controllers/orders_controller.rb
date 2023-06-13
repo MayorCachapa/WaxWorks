@@ -26,13 +26,26 @@ class OrdersController < ApplicationController
         product_data:  {name: listing.release.title
       }})
 
+
+          line_items = []
+
+        if current_user.lastest_stripe_session_id
+          line_items = Stripe::Checkout::Session.list_line_items(current_user.lastest_stripe_session_id).data
+          line_items.map!{|line_item| { price:line_item.price.id, quantity: 1}}
+          line_items.push({price: price.id, quantity: 1})
+        else
+          line_items = [{price: price.id, quantity: 1}]
+        end
+
+
       session = Stripe::Checkout::Session.create({
-        line_items: [{price: price.id, quantity: 1}],
+        line_items: ,
         mode: 'payment',
         success_url: order_url(@order),
         cancel_url: order_url(@order)
       })
 
+      current_user.update_without_password(lastest_stripe_session_id: session.id)
 
       @order.update(checkout_session_id: session.id)
       redirect_to orders_path
