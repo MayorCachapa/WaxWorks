@@ -17,6 +17,14 @@ class ListingsController < ApplicationController
     if params[:max].present?
       @releases = @releases.joins(:listings).where("price_cents <= ?", params[:max]).distinct
     end
+
+    if params[:condition].present?
+      @releases = @releases.joins(:listings).where(listings: {condition: params[:condition]}).distinct
+    end
+
+    if params[:sleeve_condition].present?
+      @releases = @releases.joins(:listings).where(listings: {sleeve_condition: params[:sleeve_condition]}).distinct
+    end
   end
 
   def new

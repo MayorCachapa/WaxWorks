@@ -7,6 +7,27 @@
                            class: "form-control",
                            value: params[:max]
                            %>
+                           Album Condition
+          <%= f.radio_button :condition , "Excellent"   %>
+            <%= f.label :condition_excellent, "Excellent"  %>
+          <%= f.radio_button :condition , "Good"   %>
+          <%= f.label :condition_good, "Good"  %>
+          <%= f.radio_button :condition , "Fair"   %>
+          <%= f.label :condition_fair, "Fair"  %>
+          <%= f.radio_button :condition , "Damaged"  %>
+          <%= f.label :condition_damaged, "Damaged" %>
+
+        Sleeve Condition
+
+            <%= f.radio_button :sleeve_condition , "Excellent"   %>
+            <%= f.label :sleeve_condition_excellent, "Excellent"  %>
+          <%= f.radio_button :sleeve_condition , "Good"   %>
+          <%= f.label :sleeve_condition_good, "Good"  %>
+          <%= f.radio_button :sleeve_condition , "Fair"   %>
+          <%= f.label :sleeve_condition_fair, "Fair"  %>
+          <%= f.radio_button :sleeve_condition , "Damaged"  %>
+          <%= f.label :sleeve_condition_damaged, "Damaged" %>
+          <%= f.submit "filter" %>
         <% end %>
 
     <div class="contition-filter"><h5>Condition</h5></div>
