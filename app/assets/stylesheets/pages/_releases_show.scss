@@ -9,7 +9,6 @@
   background-color: white;
 }
 
-
 .release-image {
  position: relative;
 }
@@ -39,21 +38,6 @@
   padding: 30px 30px 0 30px;
 }
 
-.notes {
-  font-size: 12px;
-  display: block;
-  height: 100px;
-  overflow: hidden;
-  white-space: wrap;
-  text-overflow: ellipsis;
-}
-
-.notes p {
-  overflow: hidden;
-  max-height: 58px;
-  margin-bottom: 0;
-}
-
 .track-listing ol {
   display: flex;
   flex-direction: column;
@@ -62,9 +46,11 @@
 }
 
 .track-listing li {
-  font-size: 12px;
+  font-size: 16px;
   padding-right: 10px;
 }
+
+////// Listings Style Below////////
 
 .listings-bar {
   background-color: #A5ACAF;

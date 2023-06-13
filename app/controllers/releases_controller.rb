@@ -5,6 +5,10 @@ class ReleasesController < ApplicationController
 
   def index
     @releases = Release.all
+    @user = current_user
+    @user.fetch_token
+    @user.fetch_items    
+    @listings = Listing.all
     @listings = Listing.all
 
     if params[:query].present?

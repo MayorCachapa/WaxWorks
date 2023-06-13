@@ -24,6 +24,16 @@ class User < ApplicationRecord
   end
   validates :full_name, presence: true
 
+  def fetch_token
+    refresh_spotify_token!
+  end
+
+  def fetch_items
+    fetch_user_spotify_items!
+  end
+
+  private
+
   def refresh_spotify_token!
     auth_params = {
       grant_type: 'refresh_token',
@@ -38,6 +48,52 @@ class User < ApplicationRecord
     auth_data = JSON.parse(response.body)
     self.spotify_token = auth_data['access_token']
     self.spotify_token_expires_at = Time.now + auth_data['expires_in'].seconds
+    save
+  end
+
+  def fetch_user_spotify_items!
+    access_token = self.spotify_token
+    response_artists = HTTParty.get('https://api.spotify.com/v1/me/top/artists', headers: {
+      'Authorization' => "Bearer #{access_token}"
+    })
+    response_tracks = HTTParty.get('https://api.spotify.com/v1/me/top/tracks', headers: {
+      'Authorization' => "Bearer #{access_token}"
+    })
+    response_albums = HTTParty.get('https://api.spotify.com/v1/me/albums', headers: {
+      'Authorization' => "Bearer #{access_token}"
+    })
+    
+    self.top_artists = []
+    if response_artists.code == 200
+      results = response_artists['items']
+      for item in results
+        self.top_artists.append(item["name"])
+      end
+    else
+      self.top_artists = nil
+    end
+
+    self.top_albums = []
+    if response_tracks.code == 200
+      results = response_tracks['items']
+      for item in results
+        self.top_albums.append(item["album"]['name']) unless self.top_albums.include?(item["album"]['name'])
+      end
+    else
+      self.top_albums = nil
+    end
+
+    
+    self.saved_albums = []
+    if response_albums.code == 200
+      results = response_albums['items']
+      for item in results
+        self.saved_albums.append(item['album']['name'])
+      end 
+    else 
+      self.saved_albums = nil 
+    end
+    
     save
   end
 end

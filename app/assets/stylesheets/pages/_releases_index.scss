@@ -1,5 +1,32 @@
 @import "components/filter";
 
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #A5ACAF;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.title-bar h4 {
+  margin: auto;
+}
+
+.first-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #A5ACAF;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 1020;
+  width: 100%;
+  margin-top: 102px;
+}
+
 .all-releases {
   padding: 0;
 }
@@ -12,11 +39,10 @@
 }
 
 .release-card {
-  height: 460px;
-  width: 371px;
+  height: 340px;
+  width: 280px;
   background-color: white;
-  margin:auto;
-  margin-bottom: 5px;
+  margin: 5px;
 }
 
 .release-card:hover {
@@ -24,7 +50,7 @@
 }
 
 .album-thumbnail {
-  height: 371px;
+  height: 250px;
 }
 
 .album-thumbnail img {
