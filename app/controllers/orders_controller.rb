@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     before_action :set_order, only: [:show, :edit, :update, :destroy]
 
     def index
-      @orders = Order.all
+      @orders = current_user.orders
     end
 
     def new
@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
 
 
       @order.update(checkout_session_id: session.id)
-      redirect_to new_order_payment_path(@order)
+      redirect_to orders_path
     end
 
     def show

@@ -79,7 +79,7 @@ class ReleasesController < ApplicationController
   end
 
   def show
-      @listing = Listing.new
+      @order = Order.new
   end
 
   private
