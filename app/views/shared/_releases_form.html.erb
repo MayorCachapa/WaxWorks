@@ -4,7 +4,7 @@
     <%= simple_form_for @release do |f| %>
     <%= f.input "title", label: "Album Title", placeholder: "Black Album" %>
     <%= f.input "artist", label: "Artist Name", placeholder: "Metallica" %>
-    <%= f.input "date", label: "Year Released", placeholder: "1991" %>
+    <%= f.input "date", label: "Year Released", placeholder: "1991", required: false %>
     <%= f.submit class:"btn btn-secondary btn-lg btn-dark mx-3" %>
     <% end %>
 </div>
