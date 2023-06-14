@@ -15,6 +15,17 @@
         </div>
         <div class="div release-primary-info-right d-flex align-items-center">
           <div class="heart-default px-2">
+            <% ownership = Ownership.find_by(user: current_user, release: @release) %>
+            <% if ownership %>
+              <%= link_to  ownership_path(ownership), data: {turbo_method: :delete } do %>
+                <button><i class="fa-solid fa-heart fa-2x listing-heart-red"></i></button>
+              <% end %>
+            <% else %>
+              <%= link_to release_ownerships_path(@release.id), data: {turbo_method: :post } do %>
+                <button><i class="fa-regular fa-heart fa-2x"></i></button>
+              <% end %>
+            <% end %>
+          <div class="heart-default px-2">
             <% favorite = Favorite.find_by(user: current_user, release: @release) %>
             <% if favorite %>
               <%= link_to  favorite_path(favorite), data: {turbo_method: :delete } do %>
