@@ -36,21 +36,9 @@
           <div class="order-total">
             Total: <div>$<%= format('%.2f', @total_price) %></div>
           </div>
-          <button id="pay" class="btn btn-primary btn-lg">Checkout</button>
+          <button data-controller='stripe' data-stripe-stripe-publishable-key-value="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>" data-stripe-session-id-value="<%= current_user.lastest_stripe_session_id %>" data-action="click->stripe#checkout" id="pay" class="btn btn-primary btn-lg">Checkout</button>
 
       </div>
 
   </div>
 </div>
-
-
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-  const paymentButton = document.getElementById('pay');
-  paymentButton.addEventListener('click', () => {
-    const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-    stripe.redirectToCheckout({
-      sessionId: '<%= current_user.lastest_stripe_session_id %>'
-    });
-  });
-</script>
