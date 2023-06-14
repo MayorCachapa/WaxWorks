@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :releases, only: [:new, :create, :show, :index] do
     resources :listings, only: [ :new, :create ]
     resources :favorites, :reviews, only: [ :new, :create ]
-    resources :ownerships, only: [ :new, :create]
+    resources :ownerships, only: [ :new, :create ]
   end
 
   resources :listings do

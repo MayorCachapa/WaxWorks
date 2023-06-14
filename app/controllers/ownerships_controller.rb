@@ -11,10 +11,10 @@ class OwnershipsController < ApplicationController
   def create
     @ownership = Ownership.new
     @ownership.user = current_user
-    @owernship.release = Release.find(params[:release_id])
+    @ownership.release = Release.find(params[:release_id])
 
     if @ownership.save
-      redirect_to release_path(@owernship.release)
+      redirect_to release_path(@ownership.release)
     else
       render :new, status: :unprocessable_unit
     end
