@@ -92,3 +92,5 @@ gem "omniauth", "~> 2.1"
 gem "omniauth-spotify", "~> 0.0.13"
 
 gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+gem "cloudinary"

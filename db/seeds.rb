@@ -90,7 +90,9 @@ end
 
 releases = Release.all
 for release in releases
+
   listing = Listing.create(user_id: user.id, condition: "Excelent", sleeve_condition: "Excelent", price_cents: 1599, shipping_fee: 3.50, comments:'Classic', location: user.location, release: release)
+
 end
 
 puts 'Finished successfully'
