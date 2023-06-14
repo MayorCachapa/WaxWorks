@@ -1,11 +1,13 @@
 <header>
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
-      <% for ownership in @ownerships %>
-        <div class="carousel-item <%= 'active' if ownership == @ownerships.first %>">
+      <% for ownership in @ownerships.last(5) %>
+        <div class="carousel-item <%= 'active' if ownership == @ownerships.last %>">
           <%= link_to url_for(ownership.release) do %>
             <div class="carousel-image-container">
               <%= image_tag ownership.release.url %>
+              <h2><%= ownership.release.title %></h2>
+              <h3><%= ownership.release.artist %></h3>
             </div>
           <% end %>
         </div>
@@ -22,3 +24,34 @@
     </button>
   </div>
 </header>
+
+<main>
+    <div class="title-bar">
+    <div>
+        <h4><strong>My Collection (<%= @ownerships.count %>)</strong></h4>
+    </div>
+    </div>
+    <section>
+        <div class="all-releases">
+            <div class="releases">
+        <% for ownership in @ownerships %>
+            <div class="release-card">
+                <div class="album-thumbnail">
+                    <%= link_to url_for(ownership.release) do %>
+                    <%= image_tag ownership.release.url %>
+                    <% end %>
+                </div>
+            <div class="album-content">
+                <div class="top">
+                    <div class="album-copy">
+                        <h4><%= ownership.release.title %></h4>
+                        <p><%= ownership.release.artist %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+            </div>
+            </div>
+    </section>
+</main>

@@ -7,6 +7,7 @@ class ListingsController < ApplicationController
     @favorites = Favorite.all
     @favorite = Favorite.new
     @users_favorites = Favorite.where(user: current_user)
+  
 
 
     @listings = Listing.all
@@ -72,7 +73,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:condition, :sleeve_condition, :price_cents, :shipping_fee, :comments, :location)
+    params.require(:listing).permit(:condition, :sleeve_condition, :price_cents, :shipping_fee, :comments, :location, :photo)
   end
 
   def set_listing

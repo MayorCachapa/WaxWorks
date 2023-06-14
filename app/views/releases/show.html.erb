@@ -1,44 +1,46 @@
 <%# ////////////////////////////
 ////// Release Details /////////
 //////////////////////////// %>
-
 <div class="release-master">
   <div class="release-image">
     <%= image_tag @release.url %>
   </div>
   <div class="release-information">
     <div class="release-information-content">
-      <div class="release-primary-info d-flex justify-content-between border-bottom mb-2">
+      <div class="release-primary-info border-bottom mb-2">
         <div class="release-primary-info-left">
           <h3><strong><%= @release.title %></strong></h3>
           <h5><strong><%= @release.artist %></strong></h5>
         </div>
-        <div class="div release-primary-info-right d-flex align-items-center">
-          <div class="heart-default px-2">
-            <% ownership = Ownership.find_by(user: current_user, release: @release) %>
-            <% if ownership %>
-              <%= link_to  ownership_path(ownership), data: {turbo_method: :delete } do %>
-                <button><i class="fa-solid fa-heart fa-2x listing-heart-red"></i></button>
-              <% end %>
-            <% else %>
-              <%= link_to release_ownerships_path(@release.id), data: {turbo_method: :post } do %>
-                <button><i class="fa-regular fa-heart fa-2x"></i></button>
-              <% end %>
-            <% end %>
-          <div class="heart-default px-2">
-            <% favorite = Favorite.find_by(user: current_user, release: @release) %>
-            <% if favorite %>
-              <%= link_to  favorite_path(favorite), data: {turbo_method: :delete } do %>
-                <button><i class="fa-solid fa-heart fa-2x listing-heart-red"></i></button>
-              <% end %>
-            <% else %>
-              <%= link_to release_favorites_path(@release.id), data: {turbo_method: :post } do %>
-                <button><i class="fa-regular fa-heart fa-2x"></i></button>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="release-add-listing-button">
+        <div class="release-primary-info-right">
+           <div class="release-add-listing-button">
             <button type="button" class="btn btn-primary py-2"><%= link_to "Add a Listing for this Release", new_release_listing_path(@release.id) %></button>
+          </div>
+          <div class="release-icons">
+            <div class="collection-button px-2 mt-1">
+              <% ownership = Ownership.find_by(user: current_user, release: @release) %>
+                <% if ownership %>
+                  <%= link_to  ownership_path(ownership), data: {turbo_method: :delete } do %>
+                    <button><i class="fa-sharp fa-solid fa-circle-minus fa-2xl" style="color: #000000;"></i></button>
+                  <% end %>
+                <% else %>
+                  <%= link_to release_ownerships_path(@release.id), data: {turbo_method: :post } do %>
+                    <button><i class="fa-sharp fa-solid fa-circle-plus fa-2xl" style="color: #000000;"></i></i></button>
+                <% end %>
+              <% end %>
+             </div>
+            <div class="heart-default px-2">
+              <% favorite = Favorite.find_by(user: current_user, release: @release) %>
+                <% if favorite %>
+                  <%= link_to  favorite_path(favorite), data: {turbo_method: :delete } do %>
+                    <button><i class="fa-solid fa-heart fa-2x listing-heart-red"></i></button>
+                  <% end %>
+                <% else %>
+                  <%= link_to release_favorites_path(@release.id), data: {turbo_method: :post } do %>
+                    <button><i class="fa-regular fa-heart fa-2x"></i></button>
+                  <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -46,30 +48,28 @@
         <div class="release-secondary-info-row1 pb-2 mb-2 border-bottom">
           <div class="release-format"><strong>Format:</strong>  <%= @release.format %></div>
           <div class="release-date"><strong>Release Date:</strong> <%= @release.date %></div>
-          <div class="release-listing-count"><strong>Listings:</strong> <%= @release.listings.count %></div>
+          <div class="release-listing-count"><strong>Listings:</strong> <%= @release.listings.available.count %></div>
           <div class="release-avg-price"><strong>Market Value:</strong> $10</div>
         </div>
         <div class="release-secondary-info-row2">
-          <div class="accordion" id="accordionExample">
-
-            <div class="accordion-item release-description">
-              <h2 class="accordion-header">
-                <button class="accordion-button py-2 px-2 bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Album Description
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  <% if @release.description.include?('https') %>
-                    <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
-                  <% else %>
-                    <%= @release.description[0..250] ... %>
-                  <% end %>
-                </div>
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item release-description">
+                <h2 class="accordion-header">
+                  <button class="accordion-button py-2 px-2 bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Album Description
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <% if @release.description.include?('https') %>
+                      <p>Please visit <%= link_to @release.description, @release.description, target: '_blank' %></p>
+                    <% else %>
+                      <%= @release.description[0..250] ... %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
-
             <div class="accordion-item release-tracks">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed py-2 px-2 bg-info border" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -80,68 +80,72 @@
                 <div class="accordion-body track-listing">
                   <ol>
                     <% @release.tracklist.each do |track| %>
-                        <li><%= track %></li>
+                      <li><%= track %></li>
                     <% end %>
                   </ol>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
 
 <%# ////////////////////////////
 ////// Listings Bar/////////
 //////////////////////////// %>
-
 <div class="listings-bar">
   <div>
-    <h4><strong>Available Listings for <%= @release.title %> (<%= @release.listings.count %>)</strong></h4>
+    <h4><strong>Available Listings for <%= @release.title %> (<%= @release.listings.available.count %>)</strong></h4>
   </div>
 </div>
-
 <%# ////////////////////////////
 ////// Listings /////////
 //////////////////////////// %>
 
-<% for listing in @release.listings %>
+
+<% for listing in @release.listings.available %>
 <div class="avilable-listings">
   <div class="listing-card">
     <div class="listing-image">
-      <%= image_tag @release.url %>
+      <% if listing.photo.attached? %>
+        <%= cl_image_tag listing.photo.key %>
+      <% else %>
+        <%= image_tag @release.url %>
+      <% end %>
     </div>
     <div class="listing-album border-end">
       <div class="listing-price w-50 py-1 ps-2 text-centered">
         <h2 class="m-0"><strong>$<%= format('%.2f', listing.price_cents) %></strong></h2>
       </div>
-      <p class="ps-2 py-2 m-0">Shipping: $<%= format('%.2f', listing.shipping_fee) %></p>
-      <h5><strong><%= listing.release.title %></strong></h5>
-      <h5><strong><%= listing.release.artist %></strong></h5>
-      <p>Listing Date: <%= listing.created_at.strftime('%m/%d/%Y') %></p>
-    </div>
-    <div class="listing-details border-end">
-      <h5><strong>Wax Score: </strong><%= listing_score(listing)%>/5.0</h5>
-      <span><strong>Album Condition: </strong><%= listing.condition %></span>
-      <p class="mb-2 me-3 border-bottom"><strong>Jacket/Sleeve Condition: </strong><%= listing.sleeve_condition %></p>
-      <h5><strong>Seller's Note: </strong><%= listing.comments %></h5>
-    </div>
-    <div class="listing-seller">
-      <h5><strong>Seller: </strong><%= listing.user.full_name.split.first.capitalize %></h5>
-      <h5><strong>Location: </strong><%= listing.location %></h5>
-      <p><strong>Allows offers:</strong> <%= listing.allow_offers ? "Yes" : "No" %></p>
-    </div>
-    <div class="listing-button d-flex flex-column justify-content-evenly">
-      <i class="fa-solid fa-cart-shopping fa-2xl  my-3" style="color: #000000;"></i>
-      <%= simple_form_for [listing, @order] do |f| %>
-        <%= f.button :submit, class: "btn btn-primary ", data: { toggle: "tooltip", placement: "top" }, title: "Add to Cart" do %>
+      <div class="listing-album border-end">
+        <div class="listing-price w-50 py-1 ps-2 text-centered">
+          <h2 class="m-0"><strong>$<%= format('%.2f', listing.price_cents) %></strong></h2>
+        </div>
+        <p class="ps-2 py-2 m-0">Shipping: $<%= format('%.2f', listing.shipping_fee) %></p>
+        <h5><strong><%= listing.release.title %></strong></h5>
+        <h5><strong><%= listing.release.artist %></strong></h5>
+        <p>Listing Date: <%= listing.created_at.strftime('%m/%d/%Y') %></p>
+      </div>
+      <div class="listing-details border-end">
+        <h5><strong>Wax Score: </strong><%= listing_score(listing)%>/5.0</h5>
+        <span><strong>Album Condition: </strong><%= listing.condition %></span>
+        <p class="mb-2 me-3 border-bottom"><strong>Jacket/Sleeve Condition: </strong><%= listing.sleeve_condition %></p>
+        <h5><strong>Seller's Note: </strong><%= listing.comments %></h5>
+      </div>
+      <div class="listing-seller">
+        <h5><strong>Seller: </strong><%= listing.user.full_name.split.first.capitalize %></h5>
+        <h5><strong>Location: </strong><%= listing.location %></h5>
+        <p><strong>Allows offers:</strong> <%= listing.allow_offers ? "Yes" : "No" %></p>
+      </div>
+      <div class="listing-button d-flex flex-column justify-content-evenly">
+        <i class="fa-solid fa-cart-shopping fa-2xl  my-3" style="color: #000000;"></i>
+        <%= simple_form_for [listing, @order] do |f| %>
+          <%= f.button :submit, class: "btn btn-primary ", data: { toggle: "tooltip", placement: "top" }, title: "Add to Cart" do %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-
   </div>
-</div>
 <% end %>

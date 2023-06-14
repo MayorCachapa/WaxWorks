@@ -36,8 +36,16 @@
   height: 540px;
   width: 96%;
   background-color: #ffffff;
-  margin-top: 3.5%;
   padding: 30px 30px 0 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.release-primary-info {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .track-listing ol {
@@ -50,6 +58,18 @@
 .track-listing li {
   font-size: 16px;
   padding-right: 10px;
+}
+
+.release-icons {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+.collection-button button {
+  border: none;
+  background: none;
 }
 
 ////// Listings Style Below////////

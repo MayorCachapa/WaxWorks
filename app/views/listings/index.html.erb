@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@listings.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @listings.name %>
+
 <div class="sort-bar">
   <div>
     <h4><strong>All Available Releases (100)</strong></h4>
@@ -47,7 +50,7 @@
         </div>
         <div class="listing-bottom-content">
           <div class="availability">
-            <% if release.listings.size == 0 %>
+            <% if release.listings.available.size == 0 %>
               <div class="availability-false">
                 <i class="fa-regular fa-circle-xmark" style="color: #000000;"></i>
                 <p>UNAVAILABLE</p>
