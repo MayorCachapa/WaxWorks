@@ -146,3 +146,35 @@
 
   </div>
 <% end %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@release, @review] do |f| %>
+          <%=f.input "content", label: "Review content" %>
+      </div>
+      <div class="modal-footer">
+          <%= f.submit class:"btn btn-secondary btn-lg btn-dark mx-3", input_html: { rows: 2 }%>
+        <% end %>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <% if @reviews.nil? %>
+    <p>No reviews available</p>
+  <% else %>
+    <% for review in @reviews %>
+      <p><%= review.content %></p>
+    <% end %>
+  <% end %>

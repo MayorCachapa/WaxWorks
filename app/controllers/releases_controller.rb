@@ -94,6 +94,8 @@ class ReleasesController < ApplicationController
 
   def show
       @order = Order.new
+      @review = ReleaseReview.new
+      @reviews = ReleaseReview.where(release_id: @release)
   end
 
   private

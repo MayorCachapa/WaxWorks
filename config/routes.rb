@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :listings, only: [ :new, :create ]
     resources :favorites, :reviews, only: [ :new, :create ]
     resources :ownerships, only: [ :new, :create ]
+    resources :release_reviews, only: [ :new, :create ]
   end
 
   resources :listings do
