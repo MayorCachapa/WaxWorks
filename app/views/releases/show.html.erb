@@ -46,7 +46,7 @@
         <div class="release-secondary-info-row1 pb-2 mb-2 border-bottom">
           <div class="release-format"><strong>Format:</strong>  <%= @release.format %></div>
           <div class="release-date"><strong>Release Date:</strong> <%= @release.date %></div>
-          <div class="release-listing-count"><strong>Listings:</strong> <%= @release.listings.count %></div>
+          <div class="release-listing-count"><strong>Listings:</strong> <%= @release.listings.available.count %></div>
           <div class="release-avg-price"><strong>Market Value:</strong> $10</div>
         </div>
         <div class="release-secondary-info-row2">
@@ -100,7 +100,7 @@
 
 <div class="listings-bar">
   <div>
-    <h4><strong>Available Listings for <%= @release.title %> (<%= @release.listings.count %>)</strong></h4>
+    <h4><strong>Available Listings for <%= @release.title %> (<%= @release.listings.available.count %>)</strong></h4>
   </div>
 </div>
 
@@ -108,7 +108,7 @@
 ////// Listings /////////
 //////////////////////////// %>
 
-<% for listing in @release.listings %>
+<% for listing in @release.listings.available %>
 <div class="avilable-listings">
   <div class="listing-card">
     <div class="listing-image">
