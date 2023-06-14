@@ -33,4 +33,6 @@ Rails.application.routes.draw do
 
   resources :favorites, only: [ :index, :update, :destroy ]
 
+  resources :release_reviews, only: [ :destroy ]
+
 end

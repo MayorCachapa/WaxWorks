@@ -22,12 +22,14 @@ class ReleaseReviewsController < ApplicationController
     end
 
     def destroy
+        @review = ReleaseReview.find(params[:id])
+        @review.destroy!
     end
 
     private
 
     def review_params
-        params.require(:release_review).permit(:content)
+        params.require(:release_review).permit(:content, :rating)
     end
 end
   
