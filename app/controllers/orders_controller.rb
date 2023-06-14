@@ -2,7 +2,14 @@ class OrdersController < ApplicationController
     before_action :set_order, only: [:show, :edit, :update, :destroy]
 
     def index
-      @orders = current_user.orders
+      if params[:status]=== "completed"
+          current_user.update_without_password(lastest_stripe_session_id: nil)
+          current_user.orders.where(status: "pending").update_all(status: "completed")
+      end
+      @orders = current_user.orders.where(status: "pending")
+      @subtotal_order = @orders.map { |order| order.listing.price_cents }.sum.round(2)
+      @subtotal_shipping = @orders.map { |order| order.listing.shipping_fee }.sum.round(2)
+      @total_price = (@subtotal_order + @subtotal_shipping).round(2)
     end
 
     def new
@@ -41,8 +48,8 @@ class OrdersController < ApplicationController
       session = Stripe::Checkout::Session.create({
         line_items: ,
         mode: 'payment',
-        success_url: order_url(@order),
-        cancel_url: order_url(@order)
+        success_url: orders_url({status: "completed"}),
+        cancel_url: orders_url({status: "completed"})
       })
 
       current_user.update_without_password(lastest_stripe_session_id: session.id)
