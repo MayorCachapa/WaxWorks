@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
   resources :releases, only: [:new, :create, :show, :index] do
     resources :listings, only: [ :new, :create ]
-    resources :favorites, :reviews, only: [ :new, :create, :destroy ]
+    resources :favorites, :reviews, only: [ :new, :create ]
+    resources :ownerships, only: [ :new, :create]
   end
 
   resources :listings do
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
     resources :payments, only: :new
   end
 
-  resources :ownerships, only: [ :index, :new, :create ]
+  resources :ownerships, only: [ :index, :destroy ]
 
   resources :listings, only: [ :index, :destroy, :show ]
 
