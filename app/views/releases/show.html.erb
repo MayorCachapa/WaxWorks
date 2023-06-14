@@ -112,7 +112,11 @@
 <div class="avilable-listings">
   <div class="listing-card">
     <div class="listing-image">
-      <%= image_tag @release.url %>
+      <% if listing.photo.attached? %>
+        <%= cl_image_tag listing.photo.key %>
+      <% else %>
+        <%= image_tag @release.url %>
+      <% end %>
     </div>
     <div class="listing-album border-end">
       <div class="listing-price w-50 py-1 ps-2 text-centered">
