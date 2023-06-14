@@ -115,37 +115,34 @@
         <%= image_tag @release.url %>
       <% end %>
     </div>
+
     <div class="listing-album border-end">
       <div class="listing-price w-50 py-1 ps-2 text-centered">
         <h2 class="m-0"><strong>$<%= format('%.2f', listing.price_cents) %></strong></h2>
       </div>
-      <div class="listing-album border-end">
-        <div class="listing-price w-50 py-1 ps-2 text-centered">
-          <h2 class="m-0"><strong>$<%= format('%.2f', listing.price_cents) %></strong></h2>
-        </div>
-        <p class="ps-2 py-2 m-0">Shipping: $<%= format('%.2f', listing.shipping_fee) %></p>
-        <h5><strong><%= listing.release.title %></strong></h5>
-        <h5><strong><%= listing.release.artist %></strong></h5>
-        <p>Listing Date: <%= listing.created_at.strftime('%m/%d/%Y') %></p>
-      </div>
-      <div class="listing-details border-end">
-        <h5><strong>Wax Score: </strong><%= listing_score(listing)%>/5.0</h5>
-        <span><strong>Album Condition: </strong><%= listing.condition %></span>
-        <p class="mb-2 me-3 border-bottom"><strong>Jacket/Sleeve Condition: </strong><%= listing.sleeve_condition %></p>
-        <h5><strong>Seller's Note: </strong><%= listing.comments %></h5>
-      </div>
-      <div class="listing-seller">
-        <h5><strong>Seller: </strong><%= listing.user.full_name.split.first.capitalize %></h5>
-        <h5><strong>Location: </strong><%= listing.location %></h5>
-        <p><strong>Allows offers:</strong> <%= listing.allow_offers ? "Yes" : "No" %></p>
-      </div>
-      <div class="listing-button d-flex flex-column justify-content-evenly">
-        <i class="fa-solid fa-cart-shopping fa-2xl  my-3" style="color: #000000;"></i>
-        <%= simple_form_for [listing, @order] do |f| %>
-          <%= f.button :submit, class: "btn btn-primary ", data: { toggle: "tooltip", placement: "top" }, title: "Add to Cart" do %>
-          <% end %>
-        <% end %>
-      </div>
+      <p class="ps-2 py-2 m-0">Shipping: $<%= format('%.2f', listing.shipping_fee) %></p>
+      <h5><strong><%= listing.release.title %></strong></h5>
+      <h5><strong><%= listing.release.artist %></strong></h5>
+      <p>Listing Date: <%= listing.created_at.strftime('%m/%d/%Y') %></p>
     </div>
+    <div class="listing-details border-end">
+      <h5><strong>Wax Score: </strong><%= listing_score(listing)%>/5.0</h5>
+      <span><strong>Album Condition: </strong><%= listing.condition %></span>
+      <p class="mb-2 me-3 border-bottom"><strong>Jacket/Sleeve Condition: </strong><%= listing.sleeve_condition %></p>
+      <h5><strong>Seller's Note: </strong><%= listing.comments %></h5>
+    </div>
+    <div class="listing-seller">
+      <h5><strong>Seller: </strong><%= listing.user.full_name.split.first.capitalize %></h5>
+      <h5><strong>Location: </strong><%= listing.location %></h5>
+      <p><strong>Allows offers:</strong> <%= listing.allow_offers ? "Yes" : "No" %></p>
+    </div>
+    <div class="listing-button d-flex flex-column justify-content-evenly">
+      <i class="fa-solid fa-cart-shopping fa-2xl  my-3" style="color: #000000;"></i>
+      <%= simple_form_for [listing, @order] do |f| %>
+        <%= f.button :submit, class: "btn btn-primary ", data: { toggle: "tooltip", placement: "top" }, title: "Add to Cart" do %>
+        <% end %>
+      <% end %>
+    </div>
+
   </div>
 <% end %>
