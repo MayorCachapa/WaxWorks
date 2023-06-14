@@ -16,7 +16,16 @@ class OwnershipsController < ApplicationController
     if @ownership.save
       redirect_to release_path(@ownership.release)
     else
-      render :new, status: :unprocessable_unit
+      redirect_to release_path(@ownership.release), status: :unprocessable_unit
+    end
+  end
+
+  def destroy
+    @ownership = Ownership.find(params[:id])
+    if @ownership.user == current_user
+      @ownership.destroy
+    else
+      redirect_to release_path(@ownership.release)
     end
   end
 end
