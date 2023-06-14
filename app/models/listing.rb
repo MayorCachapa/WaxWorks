@@ -11,6 +11,8 @@ class Listing < ApplicationRecord
   validates :price_cents, :shipping_fee, numericality: { greater_than: 0.0 }
   # before_save :convert_to_cents
 
+  scope :available, -> { where(availability: true) }
+
   # private
   # def convert_to_cents
   #   self.price_cents = (price_cents * 100).to_i if price_cents.present?
