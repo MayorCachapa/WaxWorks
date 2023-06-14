@@ -48,7 +48,7 @@
         <div class="release-secondary-info-row1 pb-2 mb-2 border-bottom">
           <div class="release-format"><strong>Format:</strong>  <%= @release.format %></div>
           <div class="release-date"><strong>Release Date:</strong> <%= @release.date %></div>
-          <div class="release-listing-count"><strong>Listings:</strong> <%= @release.listings.count %></div>
+          <div class="release-listing-count"><strong>Listings:</strong> <%= @release.listings.available.count %></div>
           <div class="release-avg-price"><strong>Market Value:</strong> $10</div>
         </div>
         <div class="release-secondary-info-row2">
@@ -97,21 +97,27 @@
 //////////////////////////// %>
 <div class="listings-bar">
   <div>
-    <h4><strong>Available Listings for <%= @release.title %> (<%= @release.listings.count %>)</strong></h4>
+    <h4><strong>Available Listings for <%= @release.title %> (<%= @release.listings.available.count %>)</strong></h4>
   </div>
 </div>
 <%# ////////////////////////////
 ////// Listings /////////
 //////////////////////////// %>
-<% for listing in @release.listings %>
-  <div class="avilable-listings">
-    <div class="listing-card">
-      <div class="listing-image">
-        <% if listing.photo.attached? %>
-          <%= cl_image_tag listing.photo.key %>
-        <% else %>
-          <%= image_tag @release.url %>
-        <% end %>
+
+
+<% for listing in @release.listings.available %>
+<div class="avilable-listings">
+  <div class="listing-card">
+    <div class="listing-image">
+      <% if listing.photo.attached? %>
+        <%= cl_image_tag listing.photo.key %>
+      <% else %>
+        <%= image_tag @release.url %>
+      <% end %>
+    </div>
+    <div class="listing-album border-end">
+      <div class="listing-price w-50 py-1 ps-2 text-centered">
+        <h2 class="m-0"><strong>$<%= format('%.2f', listing.price_cents) %></strong></h2>
       </div>
       <div class="listing-album border-end">
         <div class="listing-price w-50 py-1 ps-2 text-centered">
