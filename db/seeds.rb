@@ -1,6 +1,15 @@
 require 'httparty'
 # require 'dotenv/load'
 
+Order.destroy_all
+Ownership.destroy_all
+Favorite.destroy_all
+Listing.destroy_all
+User.destroy_all
+
+Release.destroy_all
+Product.destroy_all
+
 puts 'Seeding...'
 user = User.create(
   email:'test@gmail.com',
