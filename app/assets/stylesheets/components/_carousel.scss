@@ -1,15 +1,19 @@
 .carousel {
     .carousel-image-container {
+        margin-top: 95px;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: black;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  
-      img {
-        max-height: 100%;
-        max-width: 100%;
-        object-fit: contain;
-      }
+      height: 600px;
     }
-  }
+}
+
+.carousel-image-container {
+    img {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-height: 100%;
+    max-width: 600px;
+    object-fit: contain;
+    }
+}
