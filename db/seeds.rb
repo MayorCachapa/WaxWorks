@@ -1,5 +1,5 @@
 require 'httparty'
-require 'dotenv/load'
+# require 'dotenv/load'
 
 puts 'Seeding...'
 user = User.create(
