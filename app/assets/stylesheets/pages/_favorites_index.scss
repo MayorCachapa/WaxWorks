@@ -7,3 +7,81 @@
   position: relative;
   top: 50px;
 }
+
+
+.favorite-collections {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: stretch;
+  margin: 0 auto;
+  width: 87%;
+
+}
+
+.favorite-release-card {
+  width: 300px;
+  background-color: $gray;
+}
+
+.favorite-album-thumbnail {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+
+}
+
+.favorite-album-copy {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  align-items: center;
+  font-size: 24px;
+  text-align: center;
+  justify-content: center;
+  height: 100%;
+  display: none;
+  position: absolute; /* Add position absolute to position the element within the thumbnail */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Add background color to make the copy readable */
+}
+
+.favorite-title {
+  opacity: 0.8;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff; /* Add color for the artist name */
+}
+
+.favorite-artist {
+  opacity: 0.8;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff; /* Add color for the artist name */
+}
+
+.favorite-album-thumbnail:hover .ownership-album-copy{
+  display: flex;
+}
+
+.favorite-album-thumbnail:hover {
+  opacity: 0.8;
+}
+
+.favorite-album-thumbnail:hover .favorite-album-copy,
+.favorite-album-thumbnail a:hover {
+  display: flex;
+}
+
+.favorite-album-thumbnail a {
+  display: block;
+  position: relative;
+  z-index: 1; /* Ensure the link is above the album copy */
+  width: 100%;
+  height: 100%;
+}
+
+.favorite-title-intro {
+  margin-left: 97px;
+}
