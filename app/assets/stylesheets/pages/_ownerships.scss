@@ -11,6 +11,7 @@
   margin: 0px 50px;
   font-size: 50px;
   color: black;
+  font-weight: 700;
   border-radius: 3rem;
   border: solid;
   border-color: $light-gray;
@@ -26,9 +27,11 @@ header {
     background-color: gray;
     background-image: url(collection-vinyl.jpg);
     background-size: cover;
+    border-radius: 2rem;
     height: 400px;
     width: 70%;
     box-shadow: 0 0 10px rgba(0.98, 0.98, 0.98, 0.98);
+    margin-right: 30px;
 }
 
 .carousel-container {
