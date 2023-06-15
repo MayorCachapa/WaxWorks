@@ -72,11 +72,21 @@
   background: none;
 }
 
+.release-add-listing-button {
+  a {
+  text-decoration: none;
+  color: white;
+}
+}
+
 ////// Listings Style Below////////
 
 .listings-bar {
   background-color: #A5ACAF;
   padding: 10px 20px 10px 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .available-listings {
@@ -151,4 +161,28 @@
 
 .listing-button:hover a {
   color: black;
+}
+
+//////Reivews Style////
+
+.all-release-reviews {
+  height: 300px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  margin: 30px auto;
+  justify-content: flex-start;
+}
+
+.review-card {
+  width: 450px;
+  border: solid;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 20px;
+}
+
+.delete-review button {
+  border: none;
+  background: none;
 }
