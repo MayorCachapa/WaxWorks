@@ -6,19 +6,19 @@
 <div class="all-releases">
   <div class="releases">
     <% for artist in @user.top_artists %>
-      <% @listings.each do |listing| %>
-        <% if listing.release.artist == artist %>
+      <% @releases.each do |release| %>
+        <% if release.artist == artist %>
         <div class="release-card">
           <div class="album-thumbnail">
-            <%= link_to url_for(listing.release) do %>
-              <%= image_tag listing.release.url %>
+            <%= link_to url_for(release) do %>
+              <%= image_tag release.url %>
             <% end %>
           </div>
           <div class="album-content">
             <div class="top">
               <div class="album-copy">
-                <h4><%= listing.release.title %></h4>
-                <p><%= listing.release.artist %></p>
+                <h4><%= release.title %></h4>
+                <p><%= release.artist %></p>
               </div>
             </div>
           </div>
@@ -37,19 +37,19 @@
 <div class="all-releases">
   <div class="releases">
     <% for album in @user.top_albums %>
-      <% @listings.each do |listing| %>
-        <% if listing.release.title.include?(album) %>
+      <% @releases.each do |release| %>
+        <% if release.title.include?(album) %>
         <div class="release-card">
           <div class="album-thumbnail">
-            <%= link_to url_for(listing.release) do %>
-              <%= image_tag listing.release.url %>
+            <%= link_to url_for(release) do %>
+              <%= image_tag release.url %>
             <% end %>
           </div>
           <div class="album-content">
             <div class="top">
               <div class="album-copy">
-                <h4><%= listing.release.title %></h4>
-                <p><%= listing.release.artist %></p>
+                <h4><%= release.title %></h4>
+                <p><%= release.artist %></p>
               </div>
             </div>
           </div>
@@ -68,19 +68,19 @@
 <div class="all-releases">
   <div class="releases">
     <% for album in @user.saved_albums %>
-      <% @listings.each do |listing| %>
-        <% if album.include?(listing.release.title) %>
+      <% @releases.each do |release| %>
+        <% if album.include?(release.title) %>
         <div class="release-card">
           <div class="album-thumbnail">
-            <%= link_to url_for(listing.release) do %>
-              <%= image_tag listing.release.url %>
+            <%= link_to url_for(release) do %>
+              <%= image_tag release.url %>
             <% end %>
           </div>
           <div class="album-content">
             <div class="top">
               <div class="album-copy">
-                <h4><%= listing.release.title %></h4>
-                <p><%= listing.release.artist %></p>
+                <h4><%= release.title %></h4>
+                <p><%= release.artist %></p>
               </div>
             </div>
           </div>
