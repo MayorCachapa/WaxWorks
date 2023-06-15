@@ -3,15 +3,7 @@
 
 <div class="sort-bar">
   <div>
-    <h4><strong>All Available Releases (100)</strong></h4>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Sort By:</button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
+    <h4><strong>All Available Releases (<%= @releases.count %>)</strong></h4>
   </div>
 </div>
 
@@ -63,8 +55,8 @@
             <% end %>
           </div>
           <div class="listing-market-value">
-            <p>Market Value</p>
-            <p>$1.00 to $100.00</p>
+            <p>Average Market Value</p>
+           <p><%= release.average_listing %></p>
           </div>
         </div>
       </div>

@@ -42,3 +42,22 @@
 
   </div>
 </div>
+
+
+<div class="modalWrapper d-none">
+  <div class="waxworksmodal d-none">
+    <h1>Thanks for your purchase!</h1>
+  </div>
+</div>
+
+<script>
+const modal = document.querySelector('.waxworksmodal')
+const wrapper = document.querySelector('.modalWrapper')
+
+  if (window,location.href.includes('completed')) {
+    modal.classList.remove('d-none')
+    wrapper.classList.remove('d-none')
+
+  }
+
+</script>
