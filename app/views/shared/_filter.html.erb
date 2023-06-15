@@ -1,6 +1,11 @@
 <div class="filter ps-1 pt-3">
     <div class="price-filter"><h5>Price</h5></div>
              <%= form_with url: listings_path, method: :get, html: {class: "mb-4"} do |f| %>
+
+            <%= f.radio_button :availability, "Available" %>
+              <%= f.label :availability_available, "Available"  %>
+
+
           <%= f.label :query, "Max Price" %>
           <%= f.text_field :max,
                            class: "form-control",
