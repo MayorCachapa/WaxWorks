@@ -4,16 +4,17 @@
       <% for ownership in @ownerships.last(5) %>
         <div class="carousel-item <%= 'active' if ownership == @ownerships.last %>">
           <%= link_to url_for(ownership.release) do %>
-            <div class="carousel-image-container">
+            <div class="carousel-container">
               <%= image_tag ownership.release.url %>
-              <h2><%= ownership.release.title %></h2>
-              <h3><%= ownership.release.artist %></h3>
+              <div class="colleciton-carousel-copy">
+                <h2><%= ownership.release.title %></h2>
+                <h3><%= ownership.release.artist %></h3>
+              </div>
             </div>
           <% end %>
         </div>
       <% end %>
     </div>
-
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -26,32 +27,26 @@
 </header>
 
 <main>
-    <div class="title-bar">
+  <div class="title-bar">
     <div>
-        <h4><strong>My Collection (<%= @ownerships.count %>)</strong></h4>
+      <h4><strong>My Collection (<%= @ownerships.count %>)</strong></h4>
     </div>
-    </div>
-    <section>
-        <div class="all-releases">
-            <div class="releases">
-        <% for ownership in @ownerships %>
-            <div class="release-card">
-                <div class="album-thumbnail">
-                    <%= link_to url_for(ownership.release) do %>
-                    <%= image_tag ownership.release.url %>
-                    <% end %>
-                </div>
-            <div class="album-content">
-                <div class="top">
-                    <div class="album-copy">
-                        <h4><%= ownership.release.title %></h4>
-                        <p><%= ownership.release.artist %></p>
-                    </div>
-                </div>
+  </div>
+
+  <section>
+    <div class="all-collections">
+      <% for ownership in @ownerships %>
+        <div class="ownership-release-card">
+            <%= link_to url_for(ownership.release) do %>
+              <div class="ownership-album-thumbnail" style="background-image: url('<%= ownership.release.url %>');">
+            <% end %>
+            <div class="ownership-album-copy">
+              <p class="ownership-title"><%= ownership.release.title %></p>
+              <p class="ownership-artist"><%= ownership.release.artist %></p>
             </div>
+          </div>
         </div>
-        <% end %>
-            </div>
-            </div>
-    </section>
+      <% end %>
+    </div>
+  </section>
 </main>
