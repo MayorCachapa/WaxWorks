@@ -1,0 +1,19 @@
+<div class="footer">
+  <div class="footer-links">
+    <%= link_to ('https://github.com/MayorCachapa/WaxWorks.git'), target: :_blank do %>
+      <i class="fab fa-github fa-xl"></i>
+    <% end %>
+    <%= link_to ('https://twitter.com/waxworks_vinyl'), target: :_blank do %>
+      <i class="fab fa-twitter fa-xl"></i>
+    <% end %>
+    <%= link_to 'javascript:void(0)', onclick: 'composeEmail()' do %>
+      <i class="fa-solid fa-envelope fa-xl"></i>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function composeEmail() {
+    window.location.href = 'mailto:contact@waxworks.digital';
+  }
+</script>
