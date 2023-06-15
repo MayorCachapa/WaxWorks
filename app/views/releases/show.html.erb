@@ -146,3 +146,44 @@
 
   </div>
 <% end %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add a review
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Review for <strong><%= @release.title %></strong></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@release, @review] do |f| %>
+          <%= f.input "content", label: "Content" %>
+          <%= f.input "rating", as: :select, collection: (1..5), required: true, prompt: "What's your rating" %>
+      </div>
+      <div class="modal-footer">
+          <%= f.submit class:"btn btn-secondary btn-lg btn-dark mx-3", input_html: { rows: 2 }%>
+        <% end %>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <% if @reviews.nil? %>
+    <p>No reviews available</p>
+  <% else %>
+    <% for review in @reviews %>
+      <% if review.user == current_user %>
+      <% review.rating.times do %>
+          <i class="fas fa-star star-black"></i>
+      <% end %>
+        <p><%= review.content %></p>
+        <%= link_to release_review_path(review), data: {turbo_method: :delete }  do %>
+          <button><i class="fa-sharp fa-solid fa-circle-minus fa-2xl" style="color: #000000;"></i></button>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
