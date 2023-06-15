@@ -21,11 +21,11 @@
               <% ownership = Ownership.find_by(user: current_user, release: @release) %>
                 <% if ownership %>
                   <%= link_to  ownership_path(ownership), data: {turbo_method: :delete } do %>
-                    <button><i class="fa-sharp fa-solid fa-circle-minus fa-2xl" style="color: #000000;"></i></button>
+                    <button><i class="fa-sharp fa-solid fa-circle-minus fa-2xl" style="color: #394867;"></i></button>
                   <% end %>
                 <% else %>
                   <%= link_to release_ownerships_path(@release.id), data: {turbo_method: :post } do %>
-                    <button><i class="fa-sharp fa-solid fa-circle-plus fa-2xl" style="color: #000000;"></i></i></button>
+                    <button><i class="fa-sharp fa-solid fa-circle-plus fa-2xl" style="color: #394867;"></i></i></button>
                 <% end %>
               <% end %>
              </div>
@@ -121,15 +121,16 @@
         <h2 class="m-0"><strong>$<%= format('%.2f', listing.price_cents) %></strong></h2>
       </div>
       <p class="ps-2 py-2 m-0">Shipping: $<%= format('%.2f', listing.shipping_fee) %></p>
-      <h5><strong><%= listing.release.title %></strong></h5>
-      <h5><strong><%= listing.release.artist %></strong></h5>
-      <p>Listing Date: <%= listing.created_at.strftime('%m/%d/%Y') %></p>
+      <p class="mb-1"><strong><%= listing.release.title %></strong></p>
+      <p class="mb-1"><strong><%= listing.release.artist %></strong></p>
+      <p class="mb-1">Listing Date: <%= listing.created_at.strftime('%m/%d/%Y') %></p>
     </div>
     <div class="listing-details border-end">
       <h5><strong>Wax Score: </strong><%= listing_score(listing)%>/5.0</h5>
       <span><strong>Album Condition: </strong><%= listing.condition %></span>
       <p class="mb-2 me-3 border-bottom"><strong>Jacket/Sleeve Condition: </strong><%= listing.sleeve_condition %></p>
-      <h5><strong>Seller's Note: </strong><%= listing.comments %></h5>
+      <h5><strong>Seller's Note: </h5>
+      <p class="mb-1"></strong><%= listing.comments %></p>
     </div>
     <div class="listing-seller">
       <h5><strong>Seller: </strong><%= listing.user.full_name.split.first.capitalize %></h5>
@@ -139,17 +140,57 @@
     <div class="listing-button d-flex flex-column justify-content-evenly">
       <i class="fa-solid fa-cart-shopping fa-2xl  my-3" style="color: #000000;"></i>
       <%= simple_form_for [listing, @order] do |f| %>
-        <%= f.button :submit, class: "btn btn-primary ", data: { toggle: "tooltip", placement: "top" }, title: "Add to Cart" do %>
+        <%= f.button :submit, class: "btn", data: { toggle: "tooltip", placement: "top" }, title: "Add to Cart" do %>
         <% end %>
       <% end %>
     </div>
-
   </div>
 <% end %>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Add a review
-</button>
+
+<%# ////////////////////////////
+////// Reviews/////////
+//////////////////////////// %>
+
+<div class="listings-bar">
+  <div>
+    <h4><strong>Reviews for <%= @release.title %> (<%= @release.release_reviews.count %>)</strong></h4>
+  </div>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add a review
+  </button>
+  <!-- Button trigger modal -->
+</div>
+
+
+
+  <div class="all-release-reviews">
+     <% if @reviews.nil? %>
+      <p>No reviews available</p>
+    <% else %>
+      <% for review in @reviews.last(3) %>
+         <div class="review-card d-flex flex-column">
+          <div class="review-content">
+            <% review.rating.times do %>
+                <i class="fas fa-star" style="color: #394867;"></i>
+            <% end %>
+            <p class="mt-1 mb-0"><%= review.user.full_name %></p>
+            <p class="mb-3 pb-2 border-bottom"><%= review.created_at.strftime('%m/%d/%Y') %></p>
+            <p class="border-bottom" style="height: 120px;"><%= review.content %></p>
+          </div>
+          <div class="delete-review mt-auto d-flex">
+            <% if review.user == current_user %>
+              <%= link_to release_review_path(review), data: {turbo_method: :delete }  do %>
+                <button><i class="fa-sharp fa-solid fa-circle-minus fa-2xl" style="color: #394867;"></i></button>
+              <% end %>
+              <p>Delete</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -161,7 +202,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [@release, @review] do |f| %>
-          <%= f.input "content", label: "Content" %>
+          <%= f.input "content", label: "Comments" %>
           <%= f.input "rating", as: :select, collection: (1..5), required: true, prompt: "What's your rating" %>
       </div>
       <div class="modal-footer">
@@ -172,18 +213,4 @@
     </div>
   </div>
 </div>
-  <% if @reviews.nil? %>
-    <p>No reviews available</p>
-  <% else %>
-    <% for review in @reviews %>
-      <% if review.user == current_user %>
-      <% review.rating.times do %>
-          <i class="fas fa-star star-black"></i>
-      <% end %>
-        <p><%= review.content %></p>
-        <%= link_to release_review_path(review), data: {turbo_method: :delete }  do %>
-          <button><i class="fa-sharp fa-solid fa-circle-minus fa-2xl" style="color: #000000;"></i></button>
-        <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
+<!-- Modal -->
