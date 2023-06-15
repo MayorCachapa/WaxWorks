@@ -8,8 +8,11 @@
 
 
 <h1 class ="mt-5 favorite-title-intro">Favorites</h1>
-
     <div class="favorite-collections mt-5">
+  <% if @favorites.empty? %>
+    <hr>
+    <i><h2>No favorites available, visit <%= link_to 'Marketplace', listings_path %> to add a few!</h2></i>
+  <% else %>
       <% for favorite in @favorites %>
         <div class="favorite-release-card">
             <%= link_to url_for(favorite.release) do %>
@@ -23,4 +26,4 @@
         </div>
       <% end %>
     </div>
-
+  <% end %>
