@@ -1,0 +1,156 @@
+.ownership-banner {
+  margin-top: 137px;
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.ownership-explore {
+  width: 30%;
+  margin: 0px 50px;
+  font-size: 50px;
+  color: black;
+  border-radius: 3rem;
+  border: solid;
+  border-color: $light-gray;
+  box-shadow: 0 0 10px rgba(0.98, 0.98, 0.98, 0.3);
+  padding: 10px 0 0 20px;
+}
+
+.ownership-explore p {
+  margin: 0;
+}
+
+header {
+    background-color: gray;
+    background-image: url(collection-vinyl.jpg);
+    background-size: cover;
+    height: 400px;
+    width: 70%;
+    box-shadow: 0 0 10px rgba(0.98, 0.98, 0.98, 0.98);
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: start;
+  margin-top: 50px;
+}
+
+.colleciton-carousel-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  margin: 0 10px 135px 30px;
+  width: 400px;
+  background-color: rgba(0.98, 0.98, 0.98, 0.6);
+  padding: 10px;
+  border-radius: 3rem;
+  padding-left: 20px;
+}
+
+.colleciton-carousel-copy h2 {
+  font-weight: bolder;
+}
+
+.carousel-container {
+  img {
+    height: 300px;
+    width: auto;
+    object-fit: contain;
+    margin-block: auto;
+    margin-left: 110px;
+    padding: 2px;
+    background-color: white;
+    border-radius: 20px;
+  }
+}
+
+/////////////////////////////////
+/// Title bar////////////////////
+/// /////////////////////////////
+
+.ownership-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #A5ACAF;
+  padding: 10px 20px 10px 20px;
+  margin-block: 10px;
+  width: 100%;
+}
+
+/////////////////////////////////
+/////// Thumbnail tiles//////////
+/////////////////////////////////
+
+.all-collections {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ownership-release-card {
+  width: 300px;
+  background-color: $gray;
+}
+
+.ownership-album-thumbnail {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+
+}
+
+.ownership-album-copy {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  align-items: center;
+  font-size: 24px;
+  text-align: center;
+  justify-content: center;
+  height: 100%;
+  display: none;
+  position: absolute; /* Add position absolute to position the element within the thumbnail */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Add background color to make the copy readable */
+}
+
+.ownership-title {
+  opacity: 0.8;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff; /* Add color for the artist name */
+}
+
+.ownership-artist {
+  opacity: 0.8;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff; /* Add color for the artist name */
+}
+
+.ownership-album-thumbnail:hover .ownership-album-copy{
+  display: flex;
+}
+
+.ownership-album-thumbnail:hover {
+  opacity: 0.8;
+}
+
+.ownership-album-thumbnail:hover .ownership-album-copy,
+.ownership-album-thumbnail a:hover {
+  display: flex;
+}
+
+.ownership-album-thumbnail a {
+  display: block;
+  position: relative;
+  z-index: 1; /* Ensure the link is above the album copy */
+  width: 100%;
+  height: 100%;
+}
