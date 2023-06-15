@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get "success", to: "orders#sucess"
+
   resources :pages, only: [ :index ]
 
   resources :releases, only: [:new, :create, :show, :index] do
