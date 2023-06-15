@@ -73,6 +73,9 @@ class OrdersController < ApplicationController
     redirect_to orders_path, status: :see_other, notice: 'Order was successfully deleted.'
   end
 
+  def success
+  end
+
   private
 
   def set_order
