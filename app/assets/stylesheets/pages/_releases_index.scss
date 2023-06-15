@@ -1,5 +1,77 @@
 @import "components/filter";
 
+/////carosuel////
+///
+
+.release-banner {
+  margin-top: 137px;
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.release-explore {
+  width: 30%;
+  margin: 0px 50px;
+  font-size: 50px;
+  color: black;
+  border-radius: 3rem;
+  border: solid;
+  border-color: $light-gray;
+  box-shadow: 0 0 10px rgba(0.98, 0.98, 0.98, 0.3);
+  padding: 10px 0 0 20px;
+}
+
+.release-explore p {
+  margin: 0;
+}
+
+.discover-header {
+    background-color: gray;
+    background-image: url(discover.jpg);
+    background-size: cover;
+    height: 400px;
+    width: 70%;
+    box-shadow: 0 0 10px rgba(0.98, 0.98, 0.98, 0.98);
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: start;
+  margin-top: 50px;
+}
+
+.release-carousel-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  margin: 0 10px 135px 30px;
+  width: 400px;
+  background-color: rgba(0.98, 0.98, 0.98, 0.6);
+  padding: 10px;
+  border-radius: 3rem;
+  padding-left: 20px;
+}
+
+.release-carousel-copy h2 {
+  font-weight: bolder;
+}
+
+.carousel-container {
+  img {
+    height: 300px;
+    width: auto;
+    object-fit: contain;
+    margin-block: auto;
+    margin-left: 110px;
+    padding: 2px;
+    background-color: white;
+    border-radius: 20px;
+  }
+}
+
 .title-bar {
   display: flex;
   align-items: center;
@@ -24,7 +96,7 @@
   position: relative;
   z-index: 1020;
   width: 100%;
-  margin-top: 102px;
+  margin-top: 30px;
 }
 
 .all-releases {
@@ -43,6 +115,18 @@
   width: 280px;
   background-color: white;
   margin: 5px;
+}
+
+.top-card {
+  height: 335px;
+  width: 280px;
+  background-color: white;
+  margin: 5px 10px 10px 10px;
+  border-radius: 25px;
+  border: solid;
+  border-color: $light-gray;
+  box-shadow: 0 0 10px rgba(0.98, 0.98, 0.98, 0.3);
+  padding: 10px;
 }
 
 .release-card:hover {
