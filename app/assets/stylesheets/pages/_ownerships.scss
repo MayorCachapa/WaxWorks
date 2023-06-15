@@ -1,9 +1,33 @@
+.ownership-banner {
+  margin-top: 137px;
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.ownership-explore {
+  width: 30%;
+  margin: 0px 50px;
+  font-size: 50px;
+  color: black;
+  border-radius: 3rem;
+  border: solid;
+  border-color: $light-gray;
+  box-shadow: 0 0 10px rgba(0.98, 0.98, 0.98, 0.3);
+  padding: 10px 0 0 20px;
+}
+
+.ownership-explore p {
+  margin: 0;
+}
+
 header {
     background-color: gray;
     background-image: url(collection-vinyl.jpg);
     background-size: cover;
     height: 400px;
-    margin-top: 137px;
+    width: 70%;
     box-shadow: 0 0 10px rgba(0.98, 0.98, 0.98, 0.98);
 }
 
@@ -18,8 +42,8 @@ header {
   flex-direction: column;
   align-items: flex-start;
   color: white;
-  margin: 50px 0 188px 30px;
-  width: 840px;
+  margin: 0 10px 135px 30px;
+  width: 400px;
   background-color: rgba(0.98, 0.98, 0.98, 0.6);
   padding: 10px;
   border-radius: 3rem;
@@ -32,15 +56,29 @@ header {
 
 .carousel-container {
   img {
-    height: 250px;
+    height: 300px;
     width: auto;
     object-fit: contain;
     margin-block: auto;
-    margin-left: 165px;
-    padding: 10px;
+    margin-left: 110px;
+    padding: 2px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 20px;
   }
+}
+
+/////////////////////////////////
+/// Title bar////////////////////
+/// /////////////////////////////
+
+.ownership-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #A5ACAF;
+  padding: 10px 20px 10px 20px;
+  margin-block: 10px;
+  width: 100%;
 }
 
 /////////////////////////////////
