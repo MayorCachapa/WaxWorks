@@ -27,6 +27,10 @@ class ListingsController < ApplicationController
     if params[:sleeve_condition].present?
       @releases = @releases.joins(:listings).where(listings: {sleeve_condition: params[:sleeve_condition]}).distinct
     end
+
+    if params[:availability].present?
+      @releases = @releases.joins(:listings).where(listings: {availability: params[:availability]})
+    end
   end
 
   def new
