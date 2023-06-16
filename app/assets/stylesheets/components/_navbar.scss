@@ -72,13 +72,15 @@
   text-decoration: none;
   color: black;
   padding-bottom: 10px;
-  margin-top: 16px;
+  padding-top: 10px;
 
    &:hover {
     border-bottom: solid;
     font-weight: bold;
     border-color: black;
     background-color: #394867;
+    color: white;
+    border-radius: 5px;
    }
 }
 
