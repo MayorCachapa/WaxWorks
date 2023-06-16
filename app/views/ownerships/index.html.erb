@@ -1,36 +1,7 @@
 <div class="ownership-banner d-flex">
-<div class="ownership-explore">
-  <p>Explore</p>
-  <p>your</p>
-  <p>collection.</p>
-</div>
-<header>
-  <div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-      <% for ownership in @ownerships.last(5) %>
-        <div class="carousel-item <%= 'active' if ownership == @ownerships.last %>">
-          <%= link_to url_for(ownership.release) do %>
-            <div class="carousel-container">
-              <%= image_tag ownership.release.url %>
-              <div class="colleciton-carousel-copy">
-                <h2><%= ownership.release.title %></h2>
-                <h3><%= ownership.release.artist %></h3>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</header>
+  <h2 class="banner-copy">Explore</h2>
+  <h2 class="banner-copy">your</h2>
+  <h2 class="banner-copy">collection.</h2>
 </div>
 
 <main>
